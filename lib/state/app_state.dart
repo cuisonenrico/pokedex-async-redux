@@ -1,6 +1,5 @@
-import 'package:counter_async_redux/api/models/detailsPokemon_model.dart';
+import 'package:async_redux/async_redux.dart';
 import 'package:counter_async_redux/api/models/pokemon_model.dart';
-import 'package:counter_async_redux/api/models/specificType_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_state.freezed.dart';
@@ -9,12 +8,13 @@ part 'app_state.g.dart';
 @freezed
 class AppState with _$AppState {
   factory AppState({
-    @JsonKey(name: 'pokemon') List<DetailsPokemon>? pokemon,
-    @Default('0') @JsonKey(name: 'nextPage') String? nextPage,
+    @Default(<Pokemon>[]) @JsonKey(name: 'pokemon') List<Pokemon> pokemon,
+    @JsonKey(name: 'nextPage') String? nextPage,
+    @Default(Wait.empty) @JsonKey(ignore: true, name: 'wait') Wait wait,
   }) = _AppState;
 
   factory AppState.init() => AppState(
-        pokemon: List.empty(),
+        wait: Wait(),
       );
 
   factory AppState.fromJson(Map<String, dynamic> json) =>

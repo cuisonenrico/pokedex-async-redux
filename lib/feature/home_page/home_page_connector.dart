@@ -15,13 +15,15 @@ class HomePageConnector extends StatelessWidget {
         vm: () => HomePageVmFactory(),
         onInit: (store) async {
           store.dispatch(GetPokemonList());
-          store.dispatch(GetNextPage());
         },
         builder: (context, vm) {
-          return HomePage(
-            loadMore: vm.loadMore,
-            pokemon: vm.pokemon,
-            next: vm.next,
+          return vm.homePageState.when(
+            (pokemonList) => HomePage(
+              getPokemon: vm.getPokemon,
+              pokemon: pokemonList!,
+            ),
+            loading: () => Center(child: CircularProgressIndicator()),
+            error: (err) => Center(child: Text(err!)),
           );
         });
   }

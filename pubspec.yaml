@@ -11,6 +11,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   async_redux: ^15.0.0
   http: any
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

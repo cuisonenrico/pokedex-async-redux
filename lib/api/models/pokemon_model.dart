@@ -1,3 +1,4 @@
+import 'package:counter_async_redux/api/models/detailsPokemon_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokemon_model.freezed.dart';

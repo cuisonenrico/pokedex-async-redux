@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:counter_async_redux/api/models/pokemon_model.dart';
 import 'package:counter_async_redux/api/models/types_model.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/pokemon_details_page.dart';
+import 'package:counter_async_redux/feature/pokemon_details_page.dart/pokemon_details_page_connector.dart';
 import 'package:counter_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -17,14 +17,14 @@ class PokemonTile extends StatefulWidget {
 }
 
 class _PokemonTileState extends State<PokemonTile> {
-  TypeList? thisTileTypes;
+  TypeList? thisType;
   @override
   void initState() {
     http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
       if (value.statusCode == 200) {
         var result = jsonDecode(value.body);
         setState(() {
-          thisTileTypes = TypeList.fromJson(result);
+          thisType = TypeList.fromJson(result);
         });
       } else {
         print('error');
@@ -54,8 +54,11 @@ class _PokemonTileState extends State<PokemonTile> {
           child: Column(children: [
             const SizedBox(height: 8),
             Text(
-              '${widget.thisPokemon.name}',
-              style: const TextStyle(color: Colors.black),
+              '${widget.thisPokemon.name?[0].toUpperCase()}${widget.thisPokemon.name?.substring(1).toLowerCase()}',
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 15),
@@ -64,9 +67,9 @@ class _PokemonTileState extends State<PokemonTile> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 1, 1, 1),
                   child: Column(children: [
-                    Text('${thisTileTypes?.types.first.types.name ?? ''}'),
+                    Text('${thisType?.types.first.types.name ?? ''}'),
                     Text(
-                        '${thisTileTypes?.types.last.types.name == thisTileTypes?.types.first.types.name ? '' : thisTileTypes?.types.last.types.name}'),
+                        '${thisType?.types.last.types.name == thisType?.types.first.types.name ? '' : thisType?.types.last.types.name}'),
                   ]),
                 ),
                 Container(
@@ -74,7 +77,7 @@ class _PokemonTileState extends State<PokemonTile> {
                   height: 100,
                   alignment: Alignment.centerRight,
                   child: Image.network(
-                    '$pokemonImgUrl${thisTileTypes?.id}.png',
+                    '$pokemonImgUrl${thisType?.id}.png',
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return CircularProgressIndicator();
@@ -91,7 +94,7 @@ class _PokemonTileState extends State<PokemonTile> {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  PokemonDetails(pokemon: widget.thisPokemon)),
+                  PokemonDetailsConnector(url: widget.thisPokemon.url)),
         );
       },
     );

@@ -1,6 +1,7 @@
 import 'package:counter_async_redux/api/models/ability_model.dart';
 import 'package:counter_async_redux/api/models/game_index_model.dart';
 import 'package:counter_async_redux/api/models/move_model.dart';
+import 'package:counter_async_redux/api/models/moves_model.dart';
 import 'package:counter_async_redux/api/models/pokemon_type_model.dart';
 import 'package:counter_async_redux/api/models/species_model.dart';
 import 'package:counter_async_redux/api/models/sprites_model.dart';
@@ -20,7 +21,7 @@ class DetailsPokemon with _$DetailsPokemon {
     @JsonKey(name: 'height') int? height,
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'isDefault') bool? isDefault,
-    @JsonKey(name: 'moves') List<Move>? moves,
+    @JsonKey(name: 'moves') List<Moves>? moves,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'species') Species? species,
     @JsonKey(name: 'sprites') Sprites? sprites,

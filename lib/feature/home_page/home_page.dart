@@ -1,7 +1,6 @@
-import 'package:counter_async_redux/api/models/pokemon_model.dart';
-import 'package:counter_async_redux/feature/home_page/widgets/pokemon_tile.dart';
-import 'package:counter_async_redux/utilities/constants.dart';
-
+import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
+import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -66,7 +65,7 @@ class HomePage extends StatelessWidget {
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
               ),
-              itemCount: pokemon?.length,
+              itemCount: pokemon?.length ?? 0,
               itemBuilder: (context, index) =>
                   PokemonTile(thisPokemon: pokemon![index]),
             ),

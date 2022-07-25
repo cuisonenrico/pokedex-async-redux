@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:counter_async_redux/api/models/pokemon_model.dart';
-import 'package:counter_async_redux/api/models/types_model.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/pokemon_details_page.dart';
-import 'package:counter_async_redux/utilities/constants.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_type_model.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/pokemon_details_page.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,14 +17,14 @@ class PokemonTile extends StatefulWidget {
 }
 
 class _PokemonTileState extends State<PokemonTile> {
-  TypeList? thisTileTypes;
+  PokemonType? thisTileTypes;
   @override
   void initState() {
     http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
       if (value.statusCode == 200) {
         var result = jsonDecode(value.body);
         setState(() {
-          thisTileTypes = TypeList.fromJson(result);
+          thisTileTypes = PokemonType.fromJson(result);
         });
       } else {
         print('error');
@@ -64,9 +64,9 @@ class _PokemonTileState extends State<PokemonTile> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 1, 1, 1),
                   child: Column(children: [
-                    Text('${thisTileTypes?.types.first.types.name ?? ''}'),
+                    Text('${thisTileTypes?.types?.first.type?.name ?? ''}'),
                     Text(
-                        '${thisTileTypes?.types.last.types.name == thisTileTypes?.types.first.types.name ? '' : thisTileTypes?.types.last.types.name}'),
+                        '${thisTileTypes?.types?.last.type?.name == thisTileTypes?.types?.first.type?.name ? '' : thisTileTypes?.types?.last.type?.name}'),
                   ]),
                 ),
                 Container(

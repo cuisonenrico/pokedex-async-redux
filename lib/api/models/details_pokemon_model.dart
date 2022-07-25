@@ -1,10 +1,10 @@
-import 'package:counter_async_redux/api/models/ability_model.dart';
-import 'package:counter_async_redux/api/models/game_index_model.dart';
-import 'package:counter_async_redux/api/models/move_model.dart';
-import 'package:counter_async_redux/api/models/pokemon_type_model.dart';
-import 'package:counter_async_redux/api/models/species_model.dart';
-import 'package:counter_async_redux/api/models/sprites_model.dart';
-import 'package:counter_async_redux/api/models/stat_model.dart';
+import 'package:pokedex_async_redux/api/models/ability_model.dart';
+import 'package:pokedex_async_redux/api/models/game_index_model.dart';
+import 'package:pokedex_async_redux/api/models/move_model.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_type_model.dart';
+import 'package:pokedex_async_redux/api/models/species_model.dart';
+import 'package:pokedex_async_redux/api/models/sprites_model.dart';
+import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'details_pokemon_model.freezed.dart';

@@ -1,8 +1,8 @@
 import 'package:counter_async_redux/api/models/version_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'gameIndex_model.freezed.dart';
-part 'gameIndex_model.g.dart';
+part 'game_index_model.freezed.dart';
+part 'game_index_model.g.dart';
 
 @freezed
 class GameIndex with _$GameIndex {

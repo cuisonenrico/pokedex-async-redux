@@ -1,8 +1,8 @@
-import 'package:counter_async_redux/api/models/specificType_model.dart';
+import 'package:counter_async_redux/api/models/specific_type_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'pokemonType_model.freezed.dart';
-part 'pokemonType_model.g.dart';
+part 'pokemon_type_model.freezed.dart';
+part 'pokemon_type_model.g.dart';
 
 @freezed
 class PokemonType with _$PokemonType {

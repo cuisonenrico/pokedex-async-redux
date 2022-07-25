@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:counter_async_redux/api/models/pokemonResponse_model.dart';
+import 'package:counter_async_redux/api/models/pokemon_response_model.dart';
 import 'package:counter_async_redux/api/models/pokemon_model.dart';
 import 'package:counter_async_redux/utilities/constants.dart';
 import 'package:http/http.dart' as http;

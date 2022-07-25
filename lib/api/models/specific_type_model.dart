@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'specificType_model.freezed.dart';
-part 'specificType_model.g.dart';
+part 'specific_type_model.freezed.dart';
+part 'specific_type_model.g.dart';
 
 @freezed
 class SpecificType with _$SpecificType {

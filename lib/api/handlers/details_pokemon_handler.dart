@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:counter_async_redux/api/models/detailsPokemon_model.dart';
+import 'package:counter_async_redux/api/models/details_pokemon_model.dart';
 import 'package:http/http.dart' as http;
 
 class DetailsPokemonHandler {

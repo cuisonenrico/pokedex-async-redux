@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'detailedStat_model.freezed.dart';
-part 'detailedStat_model.g.dart';
+part 'detailed_stat_model.freezed.dart';
+part 'detailed_stat_model.g.dart';
 
 @freezed
 class DetailedStat with _$DetailedStat {

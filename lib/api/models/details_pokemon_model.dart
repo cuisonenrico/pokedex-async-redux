@@ -1,14 +1,14 @@
 import 'package:counter_async_redux/api/models/ability_model.dart';
-import 'package:counter_async_redux/api/models/gameIndex_model.dart';
+import 'package:counter_async_redux/api/models/game_index_model.dart';
 import 'package:counter_async_redux/api/models/move_model.dart';
-import 'package:counter_async_redux/api/models/pokemonType_model.dart';
+import 'package:counter_async_redux/api/models/pokemon_type_model.dart';
 import 'package:counter_async_redux/api/models/species_model.dart';
 import 'package:counter_async_redux/api/models/sprites_model.dart';
 import 'package:counter_async_redux/api/models/stat_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'detailsPokemon_model.freezed.dart';
-part 'detailsPokemon_model.g.dart';
+part 'details_pokemon_model.freezed.dart';
+part 'details_pokemon_model.g.dart';
 
 @freezed
 class DetailsPokemon with _$DetailsPokemon {

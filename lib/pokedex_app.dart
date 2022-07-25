@@ -3,8 +3,8 @@ import 'package:counter_async_redux/feature/home_page/home_page_connector.dart';
 import 'package:counter_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
-class CounterApp extends StatelessWidget {
-  const CounterApp({required this.store});
+class PokedexApp extends StatelessWidget {
+  const PokedexApp({required this.store});
 
   final Store<AppState> store;
   @override

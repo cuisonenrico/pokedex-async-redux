@@ -11,7 +11,6 @@ class HomePageVmFactory extends VmFactory<AppState, HomePageConnector> {
     return HomePageVm(
       getPokemon: _getPokemon,
       homePageState: _getPageState(),
-      next: state.nextPage,
     );
   }
 
@@ -34,13 +33,8 @@ class HomePageVm extends Vm {
   HomePageVm({
     required this.getPokemon,
     required this.homePageState,
-    required this.next,
-  }) : super(equals: [
-          homePageState,
-          next,
-        ]);
+  }) : super(equals: [homePageState]);
 
   final Function(bool? isScrolling) getPokemon;
   final UnionPageState<List<Pokemon>> homePageState;
-  final String? next;
 }

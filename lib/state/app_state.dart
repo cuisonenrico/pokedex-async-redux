@@ -13,9 +13,7 @@ class AppState with _$AppState {
     @Default(Wait.empty) @JsonKey(ignore: true, name: 'wait') Wait wait,
   }) = _AppState;
 
-  factory AppState.init() => AppState(
-        wait: Wait(),
-      );
+  factory AppState.init() => AppState(wait: Wait());
 
   factory AppState.fromJson(Map<String, dynamic> json) =>
       _$AppStateFromJson(json);

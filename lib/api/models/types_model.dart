@@ -1,10 +1,10 @@
-class TestList {
+class TypeList {
   List<Type> types = [];
   String id = '';
 
-  TestList({required this.types, required this.id});
+  TypeList({required this.types, required this.id});
 
-  TestList.fromJson(Map<String, dynamic> json) {
+  TypeList.fromJson(Map<String, dynamic> json) {
     // print(json);
     id = json['id'].toString();
     types = List<Type>.from(json['types'].map((x) => Type.fromJson(x)));

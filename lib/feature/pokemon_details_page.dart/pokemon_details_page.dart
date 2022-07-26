@@ -61,17 +61,26 @@ class PokemonDetails extends StatelessWidget {
                     TabBar(
                       tabs: <Widget>[
                         Tab(
-                          child: Text('ABOUT', style: TextStyle(color: Colors.black)),
+                          child: Text(
+                            'ABOUT',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                         Tab(
-                          child: Text('STATS', style: TextStyle(color: Colors.black)),
-                        ),
+                            child: Text(
+                          'STATS',
+                          style: TextStyle(color: Colors.black),
+                        )),
                         Tab(
-                            //Change into Evolution
-                            child: Text('ABILITIES', style: TextStyle(color: Colors.black))),
+                            child: Text(
+                          'ABILITIES',
+                          style: TextStyle(color: Colors.black),
+                        )),
                         Tab(
-                          child: Text('MOVES', style: TextStyle(color: Colors.black)),
-                        ),
+                            child: Text(
+                          'MOVES',
+                          style: TextStyle(color: Colors.black),
+                        )),
                       ],
                     ),
                     Expanded(

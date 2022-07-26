@@ -2,6 +2,7 @@ import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -16,7 +17,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokédex', style: TextStyle(color: Colors.black)),
+        title: const Text(
+          titleHeader,
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -41,7 +45,10 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   hintText: hintSearch,
-                  prefixIcon: Icon(Icons.search, color: Colors.black),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),

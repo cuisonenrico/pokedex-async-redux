@@ -13,8 +13,7 @@ class Abilities extends StatelessWidget {
           itemCount: abilities?.length,
           itemBuilder: ((context, index) => Align(
                 alignment: Alignment.centerLeft,
-                child:
-                    Text('${abilities?[index].ability?.name?.toUpperCase()}'),
+                child: Text(abilities?[index].ability?.name?.toUpperCase() ?? ''),
               )),
         ),
       ),

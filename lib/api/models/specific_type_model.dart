@@ -10,5 +10,6 @@ class SpecificType with _$SpecificType {
     @JsonKey(name: 'url') String? url,
   }) = _SpecificType;
 
-  factory SpecificType.fromJson(Map<String, dynamic> json) => _$SpecificTypeFromJson(json);
+  factory SpecificType.fromJson(Map<String, dynamic> json) =>
+      _$SpecificTypeFromJson(json);
 }

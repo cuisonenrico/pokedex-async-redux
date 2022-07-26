@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_async_redux/utilities/constants.dart';
+import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class PokemonDetailsLoading extends StatelessWidget {
   const PokemonDetailsLoading();
@@ -8,7 +8,10 @@ class PokemonDetailsLoading extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Colors.black),
-        title: const Text('Pokédex', style: TextStyle(color: Colors.black)),
+        title: const Text(
+          'Pokédex',
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -23,7 +26,10 @@ class PokemonListLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokédex', style: TextStyle(color: Colors.black)),
+        title: const Text(
+          titleHeader,
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -48,7 +54,10 @@ class PokemonListLoading extends StatelessWidget {
                     ),
                   ),
                   hintText: hintSearch,
-                  prefixIcon: Icon(Icons.search, color: Colors.black),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),

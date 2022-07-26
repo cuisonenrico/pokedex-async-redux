@@ -31,10 +31,7 @@ class MovesTab extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(5),
-                  child: Align(
-                      alignment: Alignment.center,
-                      child:
-                          Text('${moves![index].move?.name?.toUpperCase()}')),
+                  child: Align(alignment: Alignment.center, child: Text(moves![index].move?.name?.toUpperCase() ?? '')),
                 ),
               ),
             )),

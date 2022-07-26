@@ -13,8 +13,7 @@ class BaseStats extends StatelessWidget {
           itemCount: stat?.length,
           itemBuilder: ((context, index) => Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                    '${stat?[index].stat?.name!.toUpperCase()}: ${stat?[index].baseStat.toString()}'),
+                child: Text('${stat?[index].stat?.name!.toUpperCase()}: ${stat?[index].baseStat.toString()}'),
               )),
         ),
       ),

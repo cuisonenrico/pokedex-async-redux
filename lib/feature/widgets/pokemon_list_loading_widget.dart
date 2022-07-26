@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/utilities/doubles.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
-
-class PokemonDetailsLoading extends StatelessWidget {
-  const PokemonDetailsLoading();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(color: Colors.black),
-        title: const Text(
-          'Pokédex',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: (Center(child: CircularProgressIndicator())),
-    );
-  }
-}
 
 class PokemonListLoading extends StatelessWidget {
   const PokemonListLoading();
@@ -28,7 +10,10 @@ class PokemonListLoading extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           titleHeader,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: headerSize,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

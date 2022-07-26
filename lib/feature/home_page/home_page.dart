@@ -2,6 +2,7 @@ import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/utilities/doubles.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,7 +20,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           titleHeader,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: headerSize,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

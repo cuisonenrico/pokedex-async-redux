@@ -65,9 +65,9 @@ class _PokemonTileState extends State<PokemonTile> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 1, 1, 1),
                   child: Column(children: [
-                    Text('${thisTileTypes?.subType?.first.specificType?.name ?? ''}'),
+                    Text('${thisTileTypes?.subType?.first.type?.name ?? ''}'),
                     Text(
-                        '${thisTileTypes?.subType?.last.specificType?.name == thisTileTypes?.subType?.first.specificType?.name ? '' : thisTileTypes?.subType?.last.specificType?.name}'),
+                        '${thisTileTypes?.subType?.last.type?.name == thisTileTypes?.subType?.first.type?.name ? '' : thisTileTypes?.subType?.last.type?.name}'),
                   ]),
                 ),
                 Container(

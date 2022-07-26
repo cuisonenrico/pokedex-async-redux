@@ -8,7 +8,7 @@ part 'sub_type_model.g.dart';
 class SubType with _$SubType {
   factory SubType({
     @JsonKey(name: 'slot') int? slot,
-    @JsonKey(name: 'type') SpecificType? specificType,
+    @JsonKey(name: 'type') SpecificType? type,
   }) = _SubType;
 
   factory SubType.fromJson(Map<String, dynamic> json) => _$SubTypeFromJson(json);

@@ -2,10 +2,11 @@ import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
+import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class PokemonDetails extends StatelessWidget {
-  const PokemonDetails({this.pokemon});
-  final DetailsPokemon? pokemon;
+  const PokemonDetails({required this.pokemon});
+  final DetailsPokemon pokemon;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,13 +14,13 @@ class PokemonDetails extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             leading: BackButton(color: Colors.black),
-            backgroundColor: Colors.white, //make dynamic laer
+            backgroundColor: Colors.white, // TODO: Make dynamic later
             actions: [],
           ),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-                color: Colors.white, // make dynamic later
+                color: Colors.white, // TODO: Make dynamic later
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Column(
@@ -31,7 +32,7 @@ class PokemonDetails extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
                               child: Text(
-                                '${pokemon?.name?[0].toUpperCase()}${pokemon?.name?.substring(1).toLowerCase()}',
+                                '${pokemon.name?[0].toUpperCase()}${pokemon.name?.substring(1).toLowerCase()}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 25,
@@ -43,7 +44,7 @@ class PokemonDetails extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                                   child: Text(
-                                    '#${pokemon?.id.toString().padLeft(3, '0') ?? ''}',
+                                    '#${pokemon.id.toString().padLeft(3, '0')}',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -56,13 +57,13 @@ class PokemonDetails extends StatelessWidget {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.grey, // change color later
+                                      color: Colors.grey, // TODO: Make dynamic later
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
                                       child: Text(
-                                        '${pokemon?.types?.first.specificType?.name ?? ''}',
+                                        '${pokemon.types?.first.type?.name ?? ''}',
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: Colors.white,
@@ -71,8 +72,7 @@ class PokemonDetails extends StatelessWidget {
                                     ),
                                   ),
                                   Visibility(
-                                    visible: pokemon?.types?.last.specificType?.name ==
-                                            pokemon?.types?.first.specificType?.name
+                                    visible: pokemon.types?.last.type?.name == pokemon.types?.first.type?.name
                                         ? false
                                         : true,
                                     child: Container(
@@ -83,7 +83,7 @@ class PokemonDetails extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
                                         child: Text(
-                                          '${pokemon?.types?.last.specificType?.name == pokemon?.types?.first.specificType?.name ? '' : pokemon?.types?.last.specificType?.name}',
+                                          '${pokemon.types?.last.type?.name == pokemon.types?.first.type?.name ? '' : pokemon.types?.last.type?.name}',
                                           style: TextStyle(
                                             fontSize: 15,
                                             color: Colors.white,
@@ -101,9 +101,9 @@ class PokemonDetails extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.network(
-                          '$pokemonImgUrl${pokemon?.id}.png',
+                          '$pokemonImgUrl${pokemon.id}.png',
                           fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
+                          errorBuilder: (_, __, ___) {
                             return CircularProgressIndicator();
                           },
                         ),
@@ -131,23 +131,23 @@ class PokemonDetails extends StatelessWidget {
                                   tabs: <Widget>[
                                     Tab(
                                       child: Text(
-                                        'ABOUT',
+                                        pokemonDetailsTabs[0],
                                         style: TextStyle(color: Colors.black),
                                       ),
                                     ),
                                     Tab(
                                         child: Text(
-                                      'STATS',
+                                      pokemonDetailsTabs[1],
                                       style: TextStyle(color: Colors.black),
                                     )),
                                     Tab(
                                         child: Text(
-                                      'ABILITIES',
+                                      pokemonDetailsTabs[2],
                                       style: TextStyle(color: Colors.black),
                                     )),
                                     Tab(
                                         child: Text(
-                                      'MOVES',
+                                      pokemonDetailsTabs[3],
                                       style: TextStyle(color: Colors.black),
                                     )),
                                   ],
@@ -156,7 +156,7 @@ class PokemonDetails extends StatelessWidget {
                                   child: TabBarView(
                                     children: <Widget>[
                                       Container(color: Colors.amberAccent),
-                                      BaseStats(stat: pokemon?.stats),
+                                      BaseStats(stat: pokemon.stats!),
                                       Container(color: Colors.amberAccent),
                                       Container(color: Colors.amberAccent),
                                     ],

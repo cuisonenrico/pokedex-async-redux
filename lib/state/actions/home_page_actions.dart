@@ -18,6 +18,7 @@ class GetPokemonList extends LoadingAction {
     );
   }
 }
+
 class GetPokemonDetails extends LoadingAction {
   static const key = 'get_pokemon_details_key';
   GetPokemonDetails(this.url) : super(actionKey: key);

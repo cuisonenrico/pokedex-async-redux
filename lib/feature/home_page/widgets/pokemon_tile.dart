@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/api/models/pokemon_type_model.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/pokemon_details_page.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/pokemon_details_page_connector.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -64,9 +65,9 @@ class _PokemonTileState extends State<PokemonTile> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 1, 1, 1),
                   child: Column(children: [
-                    Text(thisTileTypes?.types?.first.type?.name ?? ''),
+                    Text('${thisTileTypes?.subType?.first.specificType?.name ?? ''}'),
                     Text(
-                        '${thisTileTypes?.types?.last.type?.name == thisTileTypes?.types?.first.type?.name ? '' : thisTileTypes?.types?.last.type?.name}'),
+                        '${thisTileTypes?.subType?.last.specificType?.name == thisTileTypes?.subType?.first.specificType?.name ? '' : thisTileTypes?.subType?.last.specificType?.name}'),
                   ]),
                 ),
                 Container(
@@ -89,7 +90,7 @@ class _PokemonTileState extends State<PokemonTile> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PokemonDetails(pokemon: widget.thisPokemon)),
+          MaterialPageRoute(builder: (context) => PokemonDetailsConnector(url: widget.thisPokemon.url)),
         );
       },
     );

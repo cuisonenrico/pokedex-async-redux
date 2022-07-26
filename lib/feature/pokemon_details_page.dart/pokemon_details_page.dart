@@ -1,5 +1,4 @@
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
-
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
@@ -9,21 +8,19 @@ class PokemonDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          color: Colors.black,
-        ),
-        title: const Text(
-          titleHeader,
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            leading: BackButton(color: Colors.black),
+            title: Text(
+              titleHeader,
+              style: TextStyle(color: Colors.black),
+            ),
+            backgroundColor: Colors.transparent,
+            actions: [],
+          ),
+        ],
       ),
-      body: Scaffold(
-          body: Center(
-        child: Text(pokemon?.name ?? ''),
-      )),
     );
   }
 }

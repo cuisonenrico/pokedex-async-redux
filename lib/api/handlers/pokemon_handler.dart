@@ -16,9 +16,7 @@ class PokemonHandler {
     if (response.statusCode == 200) {
       final nextPageResult = jsonDecode(response.body);
       List pokemonMap = nextPageResult['results'];
-      return PokemonResponse(
-          next: nextPageResult['next'],
-          result: pokemonMap.map((e) => Pokemon.fromJson(e)).toList());
+      return PokemonResponse(next: nextPageResult['next'], result: pokemonMap.map((e) => Pokemon.fromJson(e)).toList());
     } else {
       print('error');
       return null;

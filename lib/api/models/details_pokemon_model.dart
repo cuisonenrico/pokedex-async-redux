@@ -1,11 +1,11 @@
 import 'package:pokedex_async_redux/api/models/ability_model.dart';
 import 'package:pokedex_async_redux/api/models/game_index_model.dart';
-import 'package:pokedex_async_redux/api/models/move_model.dart';
-import 'package:pokedex_async_redux/api/models/pokemon_type_model.dart';
+import 'package:pokedex_async_redux/api/models/moves_model.dart';
 import 'package:pokedex_async_redux/api/models/species_model.dart';
 import 'package:pokedex_async_redux/api/models/sprites_model.dart';
 import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pokedex_async_redux/api/models/sub_type_model.dart';
 
 part 'details_pokemon_model.freezed.dart';
 part 'details_pokemon_model.g.dart';
@@ -20,12 +20,12 @@ class DetailsPokemon with _$DetailsPokemon {
     @JsonKey(name: 'height') int? height,
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'isDefault') bool? isDefault,
-    @JsonKey(name: 'moves') List<Move>? moves,
+    @JsonKey(name: 'moves') List<Moves>? moves,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'species') Species? species,
     @JsonKey(name: 'sprites') Sprites? sprites,
     @JsonKey(name: 'stats') List<Stat>? stats,
-    @JsonKey(name: 'types') List<PokemonType>? types,
+    @JsonKey(name: 'types') List<SubType>? types,
     @JsonKey(name: 'weight') int? weight,
   }) = _DetailsPokemon;
 

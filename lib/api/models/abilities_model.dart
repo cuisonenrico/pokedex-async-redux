@@ -12,6 +12,5 @@ class Abilities with _$Abilities {
     @JsonKey(name: 'slot') int? slot,
   }) = _Abilities;
 
-  factory Abilities.fromJson(Map<String, dynamic> json) =>
-      _$AbilitiesFromJson(json);
+  factory Abilities.fromJson(Map<String, dynamic> json) => _$AbilitiesFromJson(json);
 }

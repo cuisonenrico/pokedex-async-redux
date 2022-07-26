@@ -24,9 +24,7 @@ class HomePageVmFactory extends VmFactory<AppState, HomePageConnector> {
     }
   }
 
-  void _getPokemon(bool? isScrolling) {
-    dispatch(GetPokemonList(isScrolling: isScrolling));
-  }
+  void _getPokemon(bool? isScrolling) => dispatch(GetPokemonList(isScrolling: isScrolling));
 }
 
 class HomePageVm extends Vm {

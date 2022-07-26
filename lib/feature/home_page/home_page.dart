@@ -50,8 +50,7 @@ class HomePage extends StatelessWidget {
         body: NotificationListener<ScrollNotification>(
           onNotification: (scrollInfo) {
             final currentScroll = scrollInfo.metrics.pixels;
-            final maxScroll =
-                scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
+            final maxScroll = scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
             if (currentScroll >= maxScroll) {
               getPokemon(true);
             }
@@ -66,8 +65,7 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: 15,
               ),
               itemCount: pokemon?.length ?? 0,
-              itemBuilder: (context, index) =>
-                  PokemonTile(thisPokemon: pokemon![index]),
+              itemBuilder: (context, index) => PokemonTile(thisPokemon: pokemon![index]),
             ),
           ),
         ),

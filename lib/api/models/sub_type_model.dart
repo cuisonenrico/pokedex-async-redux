@@ -11,6 +11,5 @@ class SubType with _$SubType {
     @JsonKey(name: 'type') SpecificType? type,
   }) = _SubType;
 
-  factory SubType.fromJson(Map<String, dynamic> json) =>
-      _$SubTypeFromJson(json);
+  factory SubType.fromJson(Map<String, dynamic> json) => _$SubTypeFromJson(json);
 }

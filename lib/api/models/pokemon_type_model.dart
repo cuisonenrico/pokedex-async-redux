@@ -11,6 +11,5 @@ class PokemonType with _$PokemonType {
     @JsonKey(name: 'types') List<SubType>? types,
   }) = _PokemonType;
 
-  factory PokemonType.fromJson(Map<String, dynamic> json) =>
-      _$PokemonTypeFromJson(json);
+  factory PokemonType.fromJson(Map<String, dynamic> json) => _$PokemonTypeFromJson(json);
 }

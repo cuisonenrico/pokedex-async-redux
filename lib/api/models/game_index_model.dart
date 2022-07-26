@@ -7,10 +7,9 @@ part 'game_index_model.g.dart';
 @freezed
 class GameIndex with _$GameIndex {
   factory GameIndex({
-    @JsonKey(name: 'game_index') int? gameIndex,
+    @JsonKey(name: 'gameIndex') int? gameIndex,
     @JsonKey(name: 'version') Version? version,
   }) = _GameIndex;
 
-  factory GameIndex.fromJson(Map<String, dynamic> json) =>
-      _$GameIndexFromJson(json);
+  factory GameIndex.fromJson(Map<String, dynamic> json) => _$GameIndexFromJson(json);
 }

@@ -54,7 +54,7 @@ class _PokemonTileState extends State<PokemonTile> {
           child: Column(children: [
             const SizedBox(height: 8),
             Text(
-              '${widget.thisPokemon.name}',
+              widget.thisPokemon.name ?? '',
               style: const TextStyle(color: Colors.black),
               textAlign: TextAlign.left,
             ),
@@ -64,7 +64,7 @@ class _PokemonTileState extends State<PokemonTile> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 1, 1, 1),
                   child: Column(children: [
-                    Text('${thisTileTypes?.types?.first.type?.name ?? ''}'),
+                    Text(thisTileTypes?.types?.first.type?.name ?? ''),
                     Text(
                         '${thisTileTypes?.types?.last.type?.name == thisTileTypes?.types?.first.type?.name ? '' : thisTileTypes?.types?.last.type?.name}'),
                   ]),
@@ -89,9 +89,7 @@ class _PokemonTileState extends State<PokemonTile> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  PokemonDetails(pokemon: widget.thisPokemon)),
+          MaterialPageRoute(builder: (context) => PokemonDetails(pokemon: widget.thisPokemon)),
         );
       },
     );

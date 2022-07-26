@@ -8,7 +8,7 @@ part 'abilities_model.g.dart';
 class Abilities with _$Abilities {
   factory Abilities({
     @JsonKey(name: 'ability') Ability? ability,
-    @JsonKey(name: 'is_hidden') bool? isHidden,
+    @JsonKey(name: 'isHidden') bool? isHidden,
     @JsonKey(name: 'slot') int? slot,
   }) = _Abilities;
 

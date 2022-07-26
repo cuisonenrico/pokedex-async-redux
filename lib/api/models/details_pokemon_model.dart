@@ -29,6 +29,5 @@ class DetailsPokemon with _$DetailsPokemon {
     @JsonKey(name: 'weight') int? weight,
   }) = _DetailsPokemon;
 
-  factory DetailsPokemon.fromJson(Map<String, dynamic> json) =>
-      _$DetailsPokemonFromJson(json);
+  factory DetailsPokemon.fromJson(Map<String, dynamic> json) => _$DetailsPokemonFromJson(json);
 }

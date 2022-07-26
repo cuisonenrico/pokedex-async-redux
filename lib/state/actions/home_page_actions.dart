@@ -5,9 +5,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 
 class GetPokemonList extends LoadingAction {
   static const key = 'get_pokemon_list_key';
-  GetPokemonList({
-    this.isScrolling = false,
-  }) : super(actionKey: isScrolling ? null : key);
+  GetPokemonList({this.isScrolling = false}) : super(actionKey: isScrolling ? null : key);
   final isScrolling;
   @override
   Future<AppState> reduce() async {

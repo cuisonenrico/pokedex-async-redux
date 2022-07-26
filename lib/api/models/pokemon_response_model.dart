@@ -11,6 +11,5 @@ class PokemonResponse with _$PokemonResponse {
     @JsonKey(name: 'next') String? next,
   }) = _PokemonResponse;
 
-  factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
-      _$PokemonResponseFromJson(json);
+  factory PokemonResponse.fromJson(Map<String, dynamic> json) => _$PokemonResponseFromJson(json);
 }

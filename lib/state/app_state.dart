@@ -15,6 +15,5 @@ class AppState with _$AppState {
 
   factory AppState.init() => AppState(wait: Wait());
 
-  factory AppState.fromJson(Map<String, dynamic> json) =>
-      _$AppStateFromJson(json);
+  factory AppState.fromJson(Map<String, dynamic> json) => _$AppStateFromJson(json);
 }

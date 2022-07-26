@@ -25,9 +25,7 @@ class _PokemonTileState extends State<PokemonTile> {
     http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
       if (value.statusCode == 200) {
         var result = jsonDecode(value.body);
-
         List SubTypeMap = result['types'];
-        print(SubTypeMap);
         setState(() {
           thisTileTypes = PokemonType(
             id: result['id'],

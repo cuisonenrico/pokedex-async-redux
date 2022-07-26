@@ -1,16 +1,16 @@
 import 'dart:async';
-import 'package:async_redux/async_redux.dart';
-import 'package:counter_async_redux/api/handlers/details_pokemon_handler.dart';
-import 'package:counter_async_redux/api/handlers/pokemon_handler.dart';
-import 'package:counter_async_redux/state/actions/actions.dart';
-import 'package:counter_async_redux/state/app_state.dart';
+import 'package:pokedex_async_redux/api/handlers/details_pokemon_handler.dart';
+import 'package:pokedex_async_redux/api/handlers/pokemon_handler.dart';
+import 'package:pokedex_async_redux/api/handlers/pokemon_type_handler.dart';
+import 'package:pokedex_async_redux/state/actions/actions.dart';
+import 'package:pokedex_async_redux/state/app_state.dart';
 
 class GetPokemonList extends LoadingAction {
-  final isScrolling;
   static const key = 'get_pokemon_list_key';
   GetPokemonList({
     this.isScrolling = false,
   }) : super(actionKey: isScrolling ? null : key);
+  final isScrolling;
   @override
   Future<AppState> reduce() async {
     final currentList = state.pokemon;
@@ -32,3 +32,15 @@ class GetPokemonDetails extends LoadingAction {
     return state.copyWith(pokemonDetails: details);
   }
 }
+
+// class GetPokemonType extends LoadingAction {
+//   static const key = 'get_pokemon_type_key';
+//   GetPokemonType(this.url, this.index) : super(actionKey: url);
+//   final url;
+//   final index;
+//   @override
+//   Future<AppState> reduce() async {
+//     final types = await PokemonTypeHandler.getTypes(url);
+//     return state.copyWith(pokemon: details);
+//   }
+// }

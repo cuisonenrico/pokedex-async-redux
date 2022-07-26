@@ -6,12 +6,11 @@ part 'sprites_model.g.dart';
 @freezed
 class Sprites with _$Sprites {
   factory Sprites({
-    @JsonKey(name: 'back_default') String? back_default,
-    @JsonKey(name: 'back_shiny') String? back_shiny,
-    @JsonKey(name: 'front_default') String? front_default,
-    @JsonKey(name: 'front_shiny') String? front_shiny,
+    @JsonKey(name: 'back_default') String? backDefault,
+    @JsonKey(name: 'back_shiny') String? backShiny,
+    @JsonKey(name: 'front_default') String? frontDefault,
+    @JsonKey(name: 'front_shiny') String? frontShiny,
   }) = _Sprites;
 
-  factory Sprites.fromJson(Map<String, dynamic> json) =>
-      _$SpritesFromJson(json);
+  factory Sprites.fromJson(Map<String, dynamic> json) => _$SpritesFromJson(json);
 }

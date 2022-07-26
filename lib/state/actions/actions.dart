@@ -1,5 +1,5 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:counter_async_redux/state/app_state.dart';
+import 'package:pokedex_async_redux/state/app_state.dart';
 
 abstract class LoadingAction extends ReduxAction<AppState> {
   LoadingAction({this.actionKey});

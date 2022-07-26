@@ -1,6 +1,6 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:counter_async_redux/pokedex_app.dart';
-import 'package:counter_async_redux/state/app_state.dart';
+import 'package:pokedex_async_redux/pokedex_app.dart';
+import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 void appStarter() {

@@ -1,4 +1,4 @@
-import 'package:counter_async_redux/api/models/ability_model.dart';
+import 'package:pokedex_async_redux/api/models/ability_model.dart';
 import 'package:flutter/material.dart';
 
 class Abilities extends StatelessWidget {

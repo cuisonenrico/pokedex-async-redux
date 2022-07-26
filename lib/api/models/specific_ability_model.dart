@@ -10,6 +10,5 @@ class SpecificAbility with _$SpecificAbility {
     @JsonKey(name: 'name') String? name,
   }) = _SpecificAbility;
 
-  factory SpecificAbility.fromJson(Map<String, dynamic> json) =>
-      _$SpecificAbilityFromJson(json);
+  factory SpecificAbility.fromJson(Map<String, dynamic> json) => _$SpecificAbilityFromJson(json);
 }

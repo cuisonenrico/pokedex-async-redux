@@ -1,6 +1,6 @@
-import 'package:counter_async_redux/api/models/pokemon_model.dart';
-import 'package:counter_async_redux/feature/home_page/widgets/pokemon_tile.dart';
-import 'package:counter_async_redux/utilities/constants.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
+import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                       style: BorderStyle.none,
                     ),
                   ),
-                  hintText: 'Search',
+                  hintText: hintSearch,
                   prefixIcon: Icon(Icons.search, color: Colors.black),
                 ),
               ),
@@ -50,8 +50,7 @@ class HomePage extends StatelessWidget {
         body: NotificationListener<ScrollNotification>(
           onNotification: (scrollInfo) {
             final currentScroll = scrollInfo.metrics.pixels;
-            final maxScroll =
-                scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
+            final maxScroll = scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
             if (currentScroll >= maxScroll) {
               getPokemon(true);
             }
@@ -66,8 +65,7 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: 15,
               ),
               itemCount: pokemon?.length,
-              itemBuilder: (context, index) =>
-                  PokemonTile(thisPokemon: pokemon![index]),
+              itemBuilder: (context, index) => PokemonTile(thisPokemon: pokemon![index]),
             ),
           ),
         ),

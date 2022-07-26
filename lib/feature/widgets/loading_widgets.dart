@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 
 class PokemonDetailsLoading extends StatelessWidget {
   const PokemonDetailsLoading();
@@ -46,7 +47,7 @@ class PokemonListLoading extends StatelessWidget {
                       style: BorderStyle.none,
                     ),
                   ),
-                  hintText: 'Search',
+                  hintText: hintSearch,
                   prefixIcon: Icon(Icons.search, color: Colors.black),
                 ),
               ),

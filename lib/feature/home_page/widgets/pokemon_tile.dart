@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:counter_async_redux/api/models/pokemon_model.dart';
-import 'package:counter_async_redux/api/models/types_model.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/pokemon_details_page_connector.dart';
-import 'package:counter_async_redux/utilities/constants.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_type_model.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/pokemon_details_page_connector.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,14 +17,14 @@ class PokemonTile extends StatefulWidget {
 }
 
 class _PokemonTileState extends State<PokemonTile> {
-  TypeList? thisType;
+  PokemonType? thisType;
   @override
   void initState() {
     http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
       if (value.statusCode == 200) {
         var result = jsonDecode(value.body);
         setState(() {
-          thisType = TypeList.fromJson(result);
+          thisType = PokemonType.fromJson(result);
         });
       } else {
         print('error');
@@ -67,9 +67,9 @@ class _PokemonTileState extends State<PokemonTile> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 1, 1, 1),
                   child: Column(children: [
-                    Text('${thisType?.types.first.types.name ?? ''}'),
+                    Text('${thisType?.subType?.first.specificType?.name ?? ''}'),
                     Text(
-                        '${thisType?.types.last.types.name == thisType?.types.first.types.name ? '' : thisType?.types.last.types.name}'),
+                        '${thisType?.subType?.last.specificType?.name == thisType?.subType?.first.specificType?.name ? '' : thisType?.subType?.last.specificType?.name}'),
                   ]),
                 ),
                 Container(
@@ -91,11 +91,7 @@ class _PokemonTileState extends State<PokemonTile> {
       ),
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  PokemonDetailsConnector(url: widget.thisPokemon.url)),
-        );
+            context, MaterialPageRoute(builder: (context) => PokemonDetailsConnector(url: widget.thisPokemon.url)));
       },
     );
   }

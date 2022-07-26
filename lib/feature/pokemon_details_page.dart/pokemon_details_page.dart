@@ -1,9 +1,9 @@
-import 'package:counter_async_redux/api/models/details_pokemon_model.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_abilities_tab.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_about_tab.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
-import 'package:counter_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
-import 'package:counter_async_redux/utilities/constants.dart';
+import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_abilities_tab.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_about_tab.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class PokemonDetails extends StatelessWidget {
@@ -16,7 +16,10 @@ class PokemonDetails extends StatelessWidget {
         leading: BackButton(
           color: Colors.black,
         ),
-        title: const Text('Pokédex', style: TextStyle(color: Colors.black)),
+        title: const Text(
+          'Pokédex',
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -58,20 +61,16 @@ class PokemonDetails extends StatelessWidget {
                     TabBar(
                       tabs: <Widget>[
                         Tab(
-                          child: Text('ABOUT',
-                              style: TextStyle(color: Colors.black)),
+                          child: Text('ABOUT', style: TextStyle(color: Colors.black)),
                         ),
                         Tab(
-                          child: Text('STATS',
-                              style: TextStyle(color: Colors.black)),
+                          child: Text('STATS', style: TextStyle(color: Colors.black)),
                         ),
                         Tab(
                             //Change into Evolution
-                            child: Text('ABILITIES',
-                                style: TextStyle(color: Colors.black))),
+                            child: Text('ABILITIES', style: TextStyle(color: Colors.black))),
                         Tab(
-                          child: Text('MOVES',
-                              style: TextStyle(color: Colors.black)),
+                          child: Text('MOVES', style: TextStyle(color: Colors.black)),
                         ),
                       ],
                     ),

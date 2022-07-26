@@ -1,6 +1,6 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:counter_async_redux/api/models/details_pokemon_model.dart';
-import 'package:counter_async_redux/api/models/pokemon_model.dart';
+import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
+import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_state.freezed.dart';
@@ -17,6 +17,5 @@ class AppState with _$AppState {
 
   factory AppState.init() => AppState(wait: Wait());
 
-  factory AppState.fromJson(Map<String, dynamic> json) =>
-      _$AppStateFromJson(json);
+  factory AppState.fromJson(Map<String, dynamic> json) => _$AppStateFromJson(json);
 }

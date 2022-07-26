@@ -1,4 +1,4 @@
-import 'package:counter_async_redux/api/models/stat_model.dart';
+import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:flutter/material.dart';
 
 class BaseStats extends StatelessWidget {
@@ -14,7 +14,7 @@ class BaseStats extends StatelessWidget {
           itemBuilder: ((context, index) => Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                    '${stat?[index].stat?.name!.toUpperCase()}: ${stat?[index].baseSstat.toString()}'),
+                    '${stat?[index].stat?.name!.toUpperCase()}: ${stat?[index].baseStat.toString()}'),
               )),
         ),
       ),

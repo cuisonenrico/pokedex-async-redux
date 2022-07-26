@@ -1,4 +1,4 @@
-import 'package:counter_async_redux/api/models/specific_ability_model.dart';
+import 'package:pokedex_async_redux/api/models/specific_ability_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ability_model.freezed.dart';
@@ -12,6 +12,5 @@ class Ability with _$Ability {
     @JsonKey(name: 'slot') int? slot,
   }) = _Ability;
 
-  factory Ability.fromJson(Map<String, dynamic> json) =>
-      _$AbilityFromJson(json);
+  factory Ability.fromJson(Map<String, dynamic> json) => _$AbilityFromJson(json);
 }

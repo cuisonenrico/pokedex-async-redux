@@ -10,6 +10,5 @@ class DetailedStat with _$DetailedStat {
     @JsonKey(name: 'url') String? url,
   }) = _DetailedStat;
 
-  factory DetailedStat.fromJson(Map<String, dynamic> json) =>
-      _$DetailedStatFromJson(json);
+  factory DetailedStat.fromJson(Map<String, dynamic> json) => _$DetailedStatFromJson(json);
 }

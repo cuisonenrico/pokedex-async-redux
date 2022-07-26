@@ -10,6 +10,5 @@ class Version with _$Version {
     @JsonKey(name: 'url') String? url,
   }) = _Version;
 
-  factory Version.fromJson(Map<String, dynamic> json) =>
-      _$VersionFromJson(json);
+  factory Version.fromJson(Map<String, dynamic> json) => _$VersionFromJson(json);
 }

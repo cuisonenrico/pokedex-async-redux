@@ -7,8 +7,8 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class PokemonDetailsConnector extends StatelessWidget {
-  const PokemonDetailsConnector({this.url});
-  final url;
+  const PokemonDetailsConnector({required this.url});
+  final String url;
 
   @override
   Widget build(BuildContext context) {

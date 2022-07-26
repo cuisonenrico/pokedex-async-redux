@@ -56,6 +56,7 @@ class PokemonDetails extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Container(
+                                    margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                     decoration: BoxDecoration(
                                       color: Colors.grey, // TODO: Make dynamic later
                                       borderRadius: BorderRadius.circular(50),

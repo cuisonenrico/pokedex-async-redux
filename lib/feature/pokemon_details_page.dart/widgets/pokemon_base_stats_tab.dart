@@ -37,7 +37,7 @@ class BaseStats extends StatelessWidget {
                       color: Colors.black,
                       backgroundColor: Colors.grey,
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-                      value: dblStat! / statMax[index],
+                      value: (dblStat ?? 0.0) / statMax[index],
                     ),
                   ),
                   Padding(
@@ -45,7 +45,7 @@ class BaseStats extends StatelessWidget {
                     child: Container(
                       width: 30,
                       child: Text(
-                        '${statMax[index]}',
+                        '${statMax[index].toInt()}',
                         style: TextStyle(
                           color: Color.fromARGB(255, 23, 177, 156),
                           fontWeight: FontWeight.bold,

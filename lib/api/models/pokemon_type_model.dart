@@ -8,7 +8,7 @@ part 'pokemon_type_model.g.dart';
 class PokemonType with _$PokemonType {
   factory PokemonType({
     @JsonKey(name: 'id') int? id,
-    @JsonKey(name: 'types') List<SubType>? subType,
+    @JsonKey(name: 'subTypes') List<SubType>? subTypes,
   }) = _PokemonType;
 
   factory PokemonType.fromJson(Map<String, dynamic> json) => _$PokemonTypeFromJson(json);

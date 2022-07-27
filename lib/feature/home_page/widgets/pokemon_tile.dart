@@ -35,10 +35,9 @@ class _PokemonTileState extends State<PokemonTile> {
                   url: e['type']['url'],
                 ))).toList(),
           );
-          if (!mounted) {
-            return;
+          if (mounted) {
+            setState(() {});
           }
-          setState(() {});
         } else {
           print('error');
         }

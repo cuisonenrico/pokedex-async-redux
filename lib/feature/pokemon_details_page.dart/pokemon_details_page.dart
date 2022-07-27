@@ -2,7 +2,7 @@ import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
-import 'package:pokedex_async_redux/feature/widgets/type_container_widget.dart';
+import 'package:pokedex_async_redux/feature/widgets/pill_container_widget.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
@@ -17,13 +17,13 @@ class PokemonDetails extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             leading: BackButton(color: Colors.black),
-            backgroundColor: pokemon.types?.first.type?.name?.getPokemonColor ?? ''.getPokemonColor,
+            backgroundColor: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
             actions: [],
           ),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-                color: pokemon.types?.first.type?.name?.getPokemonColor ?? ''.getPokemonColor,
+                color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Column(
@@ -60,10 +60,16 @@ class PokemonDetails extends StatelessWidget {
                               padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                               child: Row(
                                 children: [
-                                  TypeWidget(type: pokemon.types!.first.type!.name!),
+                                  PillContainerWidget(
+                                    type: pokemon.types!.first.type!.name!,
+                                    color: typeDetailsPageBackgroundColor,
+                                  ),
                                   Visibility(
                                     visible: pokemon.types?.last.type?.name != pokemon.types?.first.type?.name,
-                                    child: TypeWidget(type: pokemon.types!.last.type!.name!),
+                                    child: PillContainerWidget(
+                                      type: pokemon.types!.last.type!.name!,
+                                      color: typeDetailsPageBackgroundColor,
+                                    ),
                                   )
                                 ],
                               ),
@@ -104,6 +110,7 @@ class PokemonDetails extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 TabBar(
+                                  indicatorColor: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
                                   tabs: <Widget>[
                                     Tab(
                                       child: Text(
@@ -136,7 +143,7 @@ class PokemonDetails extends StatelessWidget {
                                       Container(color: Colors.white),
                                       MovesTab(
                                         moves: pokemon.moves,
-                                        color: pokemon.types?.first.type?.name?.getPokemonColor ?? ''.getPokemonColor,
+                                        color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
                                       ),
                                     ],
                                   ),

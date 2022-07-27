@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
 
-class TypeWidget extends StatelessWidget {
-  const TypeWidget({
+class PillContainerWidget extends StatelessWidget {
+  const PillContainerWidget({
     required this.type,
+    required this.color,
   });
   final String type;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(2, 0, 3, 0),
       child: Container(
         decoration: BoxDecoration(
-          color: bgTypeDetailsPage,
+          color: color,
           borderRadius: BorderRadius.circular(50),
         ),
         child: Padding(

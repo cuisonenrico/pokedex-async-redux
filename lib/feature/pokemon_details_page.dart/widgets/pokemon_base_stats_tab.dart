@@ -1,7 +1,7 @@
 import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/utilities/doubles.dart';
-import 'package:pokedex_async_redux/utilities/universal_functions.dart';
+import 'package:pokedex_async_redux/utilities/extensions.dart';
 
 class BaseStats extends StatelessWidget {
   const BaseStats({required this.stat});
@@ -23,12 +23,15 @@ class BaseStats extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                     child: Container(
                       width: 80,
-                      child: Text(capitalizeFirstLetter(stat[index]
-                              .stat
-                              ?.name!
-                              .replaceAll('special-attack', 'Sp-Atk')
-                              .replaceAll('special-defense', 'Sp-Def') ??
-                          '')),
+                      child: Text(
+                        stat[index]
+                                .stat
+                                ?.name
+                                ?.capitalize
+                                .replaceAll('special-attack', 'Sp-Atk')
+                                .replaceAll('special-defense', 'Sp-Def') ??
+                            '',
+                      ),
                     ),
                   ),
                   Container(

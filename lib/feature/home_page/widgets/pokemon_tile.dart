@@ -21,8 +21,8 @@ class _PokemonTileState extends State<PokemonTile> {
   PokemonType? thisTileTypes = PokemonType();
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
         if (value.statusCode == 200) {
           var result = jsonDecode(value.body);
           List SubTypeMap = result['types'];
@@ -35,16 +35,17 @@ class _PokemonTileState extends State<PokemonTile> {
                   url: e['type']['url'],
                 ))).toList(),
           );
-          if (mounted) {
-            setState(() {});
-          }
         } else {
           print('error');
         }
       });
+      if (mounted) {
+        setState(() {});
+      }
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

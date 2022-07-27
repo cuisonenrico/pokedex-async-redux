@@ -7,6 +7,7 @@ import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/pokemon_de
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pokedex_async_redux/utilities/universal_functions.dart';
 
 class PokemonTile extends StatefulWidget {
   const PokemonTile({
@@ -22,25 +23,30 @@ class _PokemonTileState extends State<PokemonTile> {
   PokemonType? thisTileTypes;
   @override
   void initState() {
-    http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
-      if (value.statusCode == 200) {
-        var result = jsonDecode(value.body);
-        List SubTypeMap = result['types'];
-        setState(() {
-          thisTileTypes = PokemonType(
-            id: result['id'],
-            subTypes: SubTypeMap.map((e) => SubType(
-                slot: result['slot'],
-                type: SpecificType(
-                  name: e['type']['name'],
-                  url: e['type']['url'],
-                ))).toList(),
-          );
+    if (mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
+          if (value.statusCode == 200) {
+            var result = jsonDecode(value.body);
+            List SubTypeMap = result['types'];
+            setState(() {
+              thisTileTypes = PokemonType(
+                id: result['id'],
+                subTypes: SubTypeMap.map((e) => SubType(
+                    slot: result['slot'],
+                    type: SpecificType(
+                      name: e['type']['name'],
+                      url: e['type']['url'],
+                    ))).toList(),
+              );
+            });
+          } else {
+            print('error');
+          }
         });
-      } else {
-        print('error');
-      }
-    });
+      });
+    }
+
     super.initState();
   }
 
@@ -65,7 +71,7 @@ class _PokemonTileState extends State<PokemonTile> {
           child: Column(children: [
             const SizedBox(height: 8),
             Text(
-              '${widget.thisPokemon.name?[0].toUpperCase()}${widget.thisPokemon.name?.substring(1).toLowerCase() ?? ''} ',
+              capitalizeFirstLetter(widget.thisPokemon.name ?? ''),
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,

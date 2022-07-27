@@ -1,6 +1,7 @@
 import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/utilities/doubles.dart';
+import 'package:pokedex_async_redux/utilities/universal_functions.dart';
 
 class BaseStats extends StatelessWidget {
   const BaseStats({required this.stat});
@@ -21,8 +22,13 @@ class BaseStats extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                     child: Container(
-                      width: 150,
-                      child: Text('${stat[index].stat?.name!.toUpperCase()}'),
+                      width: 80,
+                      child: Text(capitalizeFirstLetter(stat[index]
+                              .stat
+                              ?.name!
+                              .replaceAll('special-attack', 'Sp-Atk')
+                              .replaceAll('special-defense', 'Sp-Def') ??
+                          '')),
                     ),
                   ),
                   Container(
@@ -34,23 +40,10 @@ class BaseStats extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(20, 5, 0, 5),
                     alignment: Alignment.topCenter,
                     child: LinearProgressIndicator(
-                      color: Colors.black,
-                      backgroundColor: Colors.grey,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                      color: Colors.orange,
+                      backgroundColor: Color.fromARGB(97, 252, 213, 105),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
                       value: (dblStat ?? 0.0) / statMax[index],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Container(
-                      width: 30,
-                      child: Text(
-                        '${statMax[index].toInt()}',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 23, 177, 156),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                     ),
                   ),
                 ],

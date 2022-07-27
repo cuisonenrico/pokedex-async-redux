@@ -1,8 +1,11 @@
 import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
+import 'package:pokedex_async_redux/feature/widgets/pill_container_widget.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
+import 'package:pokedex_async_redux/utilities/extensions.dart';
 
 class PokemonDetails extends StatelessWidget {
   const PokemonDetails({required this.pokemon});
@@ -14,13 +17,13 @@ class PokemonDetails extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             leading: BackButton(color: Colors.black),
-            backgroundColor: Colors.white, // TODO: Make dynamic later
+            backgroundColor: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
             actions: [],
           ),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-                color: Colors.white, // TODO: Make dynamic later
+                color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Column(
@@ -32,10 +35,11 @@ class PokemonDetails extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
                               child: Text(
-                                '${pokemon.name?[0].toUpperCase()}${pokemon.name?.substring(1).toLowerCase()}',
+                                pokemon.name?.capitalize ?? '',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 25,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -48,6 +52,7 @@ class PokemonDetails extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 )),
@@ -55,42 +60,15 @@ class PokemonDetails extends StatelessWidget {
                               padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                               child: Row(
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey, // TODO: Make dynamic later
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
-                                      child: Text(
-                                        '${pokemon.types?.first.type?.name ?? ''}',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
+                                  PillContainerWidget(
+                                    type: pokemon.types!.first.type!.name!,
+                                    color: typeDetailsPageBackgroundColor,
                                   ),
                                   Visibility(
-                                    visible: pokemon.types?.last.type?.name == pokemon.types?.first.type?.name
-                                        ? false
-                                        : true,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey, // change color later
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
-                                        child: Text(
-                                          '${pokemon.types?.last.type?.name == pokemon.types?.first.type?.name ? '' : pokemon.types?.last.type?.name}',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
+                                    visible: pokemon.types?.last.type?.name != pokemon.types?.first.type?.name,
+                                    child: PillContainerWidget(
+                                      type: pokemon.types!.last.type!.name!,
+                                      color: typeDetailsPageBackgroundColor,
                                     ),
                                   )
                                 ],
@@ -111,7 +89,10 @@ class PokemonDetails extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          ),
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -129,6 +110,7 @@ class PokemonDetails extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 TabBar(
+                                  indicatorColor: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
                                   tabs: <Widget>[
                                     Tab(
                                       child: Text(
@@ -156,10 +138,13 @@ class PokemonDetails extends StatelessWidget {
                                 Expanded(
                                   child: TabBarView(
                                     children: <Widget>[
-                                      Container(color: Colors.amberAccent),
+                                      Container(color: Colors.white),
                                       BaseStats(stat: pokemon.stats!),
-                                      Container(color: Colors.amberAccent),
-                                      Container(color: Colors.amberAccent),
+                                      Container(color: Colors.white),
+                                      MovesTab(
+                                        moves: pokemon.moves,
+                                        color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
+                                      ),
                                     ],
                                   ),
                                 ),

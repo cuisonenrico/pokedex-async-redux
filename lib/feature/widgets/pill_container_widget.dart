@@ -3,11 +3,11 @@ import 'package:pokedex_async_redux/utilities/extensions.dart';
 
 class PillContainerWidget extends StatelessWidget {
   const PillContainerWidget({
-    required this.type,
+    required this.text,
     required this.color,
   });
-  final String? type;
-  final Color? color;
+  final String text;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +20,7 @@ class PillContainerWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
           child: Text(
-            '${type?.capitalize}',
+            text.capitalize,
             style: TextStyle(
               fontSize: 15,
               color: Colors.white,

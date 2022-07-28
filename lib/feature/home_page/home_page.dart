@@ -8,11 +8,11 @@ import 'package:pokedex_async_redux/utilities/strings.dart';
 class HomePage extends StatelessWidget {
   const HomePage({
     required this.getPokemon,
-    this.pokemon,
+    required this.pokemon,
   });
 
   final Function(bool? isScrolling) getPokemon;
-  final List<Pokemon>? pokemon;
+  final List<Pokemon> pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +48,12 @@ class HomePage extends StatelessWidget {
         },
         child: Padding(
           padding: EdgeInsets.fromLTRB(5, 10, 10, 0),
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 220,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5,
-            ),
-            itemCount: pokemon?.length ?? 0,
-            itemBuilder: (context, index) => PokemonTile(thisPokemon: pokemon![index]),
+          child: GridView.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 5,
+            crossAxisSpacing: 5,
+            childAspectRatio: 3 / 2,
+            children: pokemon.map((e) => Container(child: PokemonTile(thisPokemon: e))).toList(),
           ),
         ),
       ),

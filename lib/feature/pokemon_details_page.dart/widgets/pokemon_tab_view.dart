@@ -7,26 +7,27 @@ import 'package:pokedex_async_redux/utilities/extensions.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class TabView extends StatelessWidget {
-  const TabView({required this.pokemon});
-  final DetailsPokemon pokemon;
+  const TabView({required this.pokemonDetails});
+  final DetailsPokemon pokemonDetails;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
+      color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-            ),
-            color: Colors.white),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+          color: Colors.white,
+        ),
         child: DefaultTabController(
           length: 4,
           child: Column(
             children: [
               TabBar(
-                indicatorColor: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
+                indicatorColor: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
                 tabs: <Widget>[
                   Tab(
                     child: Text(
@@ -35,36 +36,39 @@ class TabView extends StatelessWidget {
                     ),
                   ),
                   Tab(
-                      child: Text(
-                    pokemonDetailsTabs[1],
-                    style: TextStyle(color: Colors.black),
-                  )),
+                    child: Text(
+                      pokemonDetailsTabs[1],
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
                   Tab(
-                      child: Text(
-                    pokemonDetailsTabs[2],
-                    style: TextStyle(color: Colors.black),
-                  )),
+                    child: Text(
+                      pokemonDetailsTabs[2],
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
                   Tab(
-                      child: Text(
-                    pokemonDetailsTabs[3],
-                    style: TextStyle(color: Colors.black),
-                  )),
+                    child: Text(
+                      pokemonDetailsTabs[3],
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
                 ],
               ),
               Expanded(
                   child: TabBarView(
                 children: <Widget>[
                   AboutTab(
-                    weight: pokemon.weight!,
-                    height: pokemon.height!,
-                    abilities: pokemon.abilities,
-                    baseExperience: pokemon.baseExperience!,
+                    weight: pokemonDetails.weight ?? 0,
+                    height: pokemonDetails.height ?? 0,
+                    abilities: pokemonDetails.abilities,
+                    baseExperience: pokemonDetails.baseExperience ?? 0,
                   ),
-                  BaseStats(stat: pokemon.stats!),
+                  BaseStats(stat: pokemonDetails.stats),
                   Container(color: Colors.white),
                   MovesTab(
-                    moves: pokemon.moves,
-                    color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
+                    moves: pokemonDetails.moves,
+                    color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
                   ),
                 ],
               )),

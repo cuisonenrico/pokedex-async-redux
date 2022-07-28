@@ -5,17 +5,17 @@ import 'package:pokedex_async_redux/utilities/doubles.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
 
 class BaseStats extends StatelessWidget {
-  const BaseStats({required this.stat});
-  final List<Stat> stat;
+  const BaseStats({this.stat});
+  final List<Stat>? stat;
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
         padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
         child: ListView.builder(
-          itemCount: stat.length,
+          itemCount: stat?.length,
           itemBuilder: ((context, index) {
-            var dblStat = stat[index].baseStat?.toDouble();
+            var dblStat = stat?[index].baseStat?.toDouble();
             return Align(
               alignment: Alignment.centerLeft,
               child: Row(
@@ -25,7 +25,7 @@ class BaseStats extends StatelessWidget {
                     child: Container(
                       width: 80,
                       child: Text(
-                        stat[index]
+                        stat?[index]
                                 .stat
                                 ?.name
                                 ?.capitalize
@@ -41,7 +41,7 @@ class BaseStats extends StatelessWidget {
                   ),
                   Container(
                     width: 30,
-                    child: Text('${stat[index].baseStat.toString()}'),
+                    child: Text('${stat?[index].baseStat.toString()}'),
                   ),
                   Container(
                     width: 130,

@@ -2,6 +2,7 @@ import 'package:pokedex_async_redux/api/models/ability_model.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
+import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class AboutTab extends StatelessWidget {
   const AboutTab({
@@ -12,8 +13,9 @@ class AboutTab extends StatelessWidget {
   });
   final int height;
   final int weight;
-  final List<Ability>? abilities;
   final int baseExperience;
+  final List<Ability>? abilities;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +31,7 @@ class AboutTab extends StatelessWidget {
                   child: Container(
                     width: 150,
                     child: Text(
-                      'Height',
+                      aboutHeight,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: aboutTextColor,
@@ -53,7 +55,7 @@ class AboutTab extends StatelessWidget {
                   child: Container(
                     width: 150,
                     child: Text(
-                      'Weight',
+                      aboutWeight,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: aboutTextColor,
@@ -77,7 +79,7 @@ class AboutTab extends StatelessWidget {
                   child: Container(
                     width: 150,
                     child: Text(
-                      'Abilities',
+                      aboutAbilities,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: aboutTextColor,
@@ -85,11 +87,7 @@ class AboutTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: 200,
-                  child:
-                      Wrap(children: abilities!.map((e) => Text('${(e.ability?.name ?? '').capitalize}, ')).toList()),
-                ),
+                Text(abilities!.map((e) => e.ability?.name?.capitalize ?? '').toList().join(', ')),
               ],
             ),
           ),
@@ -102,7 +100,7 @@ class AboutTab extends StatelessWidget {
                   child: Container(
                     width: 150,
                     child: Text(
-                      'Base Experience ',
+                      aboutBaseExperience,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: aboutTextColor,
@@ -112,7 +110,7 @@ class AboutTab extends StatelessWidget {
                 ),
                 Container(
                   width: 60,
-                  child: Text('$baseExperience'),
+                  child: Text(baseExperience.toString()),
                 ),
               ],
             ),

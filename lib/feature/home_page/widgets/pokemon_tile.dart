@@ -78,17 +78,16 @@ class _PokemonTileState extends State<PokemonTile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PillContainerWidget(
-                    type: thisTileTypes?.subTypes?.first.type?.name,
+                    text: thisTileTypes?.subTypes?.first.type?.name ?? '',
                     color: typeDetailsPageBackgroundColor,
                   ),
                   SizedBox(height: 5),
-                  Visibility(
-                    visible: thisTileTypes?.subTypes?.last.type?.name != thisTileTypes?.subTypes?.first.type?.name,
-                    child: PillContainerWidget(
-                      type: thisTileTypes?.subTypes?.last.type?.name ?? '',
-                      color: typeDetailsPageBackgroundColor,
-                    ),
-                  )
+                  thisTileTypes?.subTypes?.last.type?.name == thisTileTypes?.subTypes?.first.type?.name
+                      ? SizedBox()
+                      : PillContainerWidget(
+                          text: thisTileTypes?.subTypes?.last.type?.name ?? '',
+                          color: typeDetailsPageBackgroundColor,
+                        ),
                 ],
               ),
             ),
@@ -99,12 +98,7 @@ class _PokemonTileState extends State<PokemonTile> {
                 '$pokemonImgUrl${thisTileTypes?.id}.png',
                 width: 115,
                 height: 115,
-                errorBuilder: (_, __, ___) {
-                  return SpinKitSpinningLines(
-                    size: 50.0,
-                    color: Colors.white,
-                  );
-                },
+                errorBuilder: (_, __, ___) => SpinKitSpinningLines(color: Colors.white),
               ),
             )
           ],

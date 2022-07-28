@@ -19,7 +19,7 @@ class MovesTab extends StatelessWidget {
                   ?.map((e) => Padding(
                         padding: EdgeInsets.all(2),
                         child: PillContainerWidget(
-                          type: e.move!.name!,
+                          text: e.move!.name!,
                           color: color,
                         ),
                       ))

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PokemonDetailsLoading extends StatelessWidget {
   const PokemonDetailsLoading();
@@ -10,7 +11,7 @@ class PokemonDetailsLoading extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: (Center(child: CircularProgressIndicator())),
+      body: Center(child: SpinKitDualRing(color: Colors.black)),
     );
   }
 }

@@ -8,11 +8,11 @@ import 'package:pokedex_async_redux/utilities/strings.dart';
 class HomePage extends StatelessWidget {
   const HomePage({
     required this.getPokemon,
-    this.pokemon,
+    required this.pokemon,
   });
 
   final Function(bool? isScrolling) getPokemon;
-  final List<Pokemon>? pokemon;
+  final List<Pokemon> pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -23,61 +23,37 @@ class HomePage extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: headerSize,
+            fontWeight: FontWeight.bold,
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.search),
+            color: Colors.black,
+            tooltip: 'Search Icon',
+            onPressed: () {},
+          )
+        ],
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: Center(
-              child: TextField(
-                onChanged: (query) async {},
-                showCursor: false,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
-                    ),
-                  ),
-                  hintText: hintText,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        body: NotificationListener<ScrollNotification>(
-          onNotification: (scrollInfo) {
-            final currentScroll = scrollInfo.metrics.pixels;
-            final maxScroll = scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
-            if (currentScroll >= maxScroll) {
-              getPokemon(true);
-            }
-            return false;
-          },
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 250,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-              ),
-              itemCount: pokemon?.length ?? 0,
-              itemBuilder: (context, index) => PokemonTile(thisPokemon: pokemon![index]),
-            ),
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (scrollInfo) {
+          final currentScroll = scrollInfo.metrics.pixels;
+          final maxScroll = scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
+          if (currentScroll >= maxScroll) {
+            getPokemon(true);
+          }
+          return false;
+        },
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(5, 10, 10, 0),
+          child: GridView.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 5,
+            crossAxisSpacing: 5,
+            childAspectRatio: 3 / 2,
+            children: pokemon.map((e) => Container(child: PokemonTile(thisPokemon: e))).toList(),
           ),
         ),
       ),

@@ -77,17 +77,18 @@ class _PokemonTileState extends State<PokemonTile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PillContainerWidget(
-                    text: thisTileTypes?.subTypes?.first.type?.name ?? '',
-                    color: typeDetailsPageBackgroundColor,
-                  ),
+                  if (thisTileTypes?.subTypes?.first.type?.name != null)
+                    PillContainerWidget(
+                      text: thisTileTypes?.subTypes?.first.type?.name,
+                      color: typeDetailsPageBackgroundColor,
+                    ),
                   SizedBox(height: 5),
-                  thisTileTypes?.subTypes?.last.type?.name == thisTileTypes?.subTypes?.first.type?.name
-                      ? SizedBox()
-                      : PillContainerWidget(
-                          text: thisTileTypes?.subTypes?.last.type?.name ?? '',
-                          color: typeDetailsPageBackgroundColor,
-                        ),
+                  if ('${thisTileTypes?.subTypes?.last.type?.name ?? ''}' !=
+                      '${thisTileTypes?.subTypes?.first.type?.name ?? ''}')
+                    PillContainerWidget(
+                      text: thisTileTypes?.subTypes?.last.type?.name ?? '',
+                      color: typeDetailsPageBackgroundColor,
+                    ),
                 ],
               ),
             ),

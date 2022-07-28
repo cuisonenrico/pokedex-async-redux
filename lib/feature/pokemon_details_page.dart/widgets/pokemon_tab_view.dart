@@ -56,22 +56,23 @@ class TabView extends StatelessWidget {
                 ],
               ),
               Expanded(
-                  child: TabBarView(
-                children: <Widget>[
-                  AboutTab(
-                    weight: pokemonDetails.weight ?? 0,
-                    height: pokemonDetails.height ?? 0,
-                    abilities: pokemonDetails.abilities,
-                    baseExperience: pokemonDetails.baseExperience ?? 0,
-                  ),
-                  BaseStats(stat: pokemonDetails.stats),
-                  Container(color: Colors.white),
-                  MovesTab(
-                    moves: pokemonDetails.moves,
-                    color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
-                  ),
-                ],
-              )),
+                child: TabBarView(
+                  children: <Widget>[
+                    AboutTab(
+                      weight: pokemonDetails.weight ?? 0,
+                      height: pokemonDetails.height ?? 0,
+                      abilities: pokemonDetails.abilities,
+                      baseExperience: pokemonDetails.baseExperience ?? 0,
+                    ),
+                    BaseStats(stat: pokemonDetails.stats),
+                    Container(color: Colors.white),
+                    MovesTab(
+                      moves: pokemonDetails.moves,
+                      color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

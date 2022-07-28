@@ -11,9 +11,7 @@ class AboutTab extends StatelessWidget {
     required this.abilities,
     required this.baseExperience,
   });
-  final int height;
-  final int weight;
-  final int baseExperience;
+  final int height, weight, baseExperience;
   final List<Ability>? abilities;
 
   @override

@@ -33,7 +33,10 @@ class DetailsPokemonHandler {
         weight: endResponse['weight'],
         abilities: abilitiesMap
             .map((e) => Ability(
-                  ability: SpecificAbility(name: e['ability']['name'], url: e['ability']['url']),
+                  ability: SpecificAbility(
+                    name: e['ability']['name'],
+                    url: e['ability']['url'],
+                  ),
                   slot: e['slot'],
                   isHidden: e['is_hidden'],
                 ))

@@ -55,12 +55,11 @@ class PokemonDetails extends StatelessWidget {
                     text: pokemon.types!.first.type!.name!,
                     color: typeDetailsPageBackgroundColor,
                   ),
-                  pokemon.types?.last.type?.name == pokemon.types?.first.type?.name
-                      ? SizedBox()
-                      : PillContainerWidget(
-                          text: pokemon.types!.last.type!.name!,
-                          color: typeDetailsPageBackgroundColor,
-                        ),
+                  if (pokemon.types?.last.type?.name != pokemon.types?.first.type?.name)
+                    PillContainerWidget(
+                      text: pokemon.types!.last.type!.name!,
+                      color: typeDetailsPageBackgroundColor,
+                    ),
                 ],
               ),
             ),

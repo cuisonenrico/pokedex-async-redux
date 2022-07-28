@@ -9,6 +9,7 @@ import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokedex_async_redux/utilities/extensions.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PokemonTile extends StatefulWidget {
   const PokemonTile({required this.thisPokemon});
@@ -56,62 +57,58 @@ class _PokemonTileState extends State<PokemonTile> {
           borderRadius: BorderRadius.circular(15),
           color: thisTileTypes?.subTypes?.first.type?.name!.getPokemonColor ?? Colors.white,
         ),
-        child: Column(children: [
-          Column(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                  child: Text(
-                    widget.thisPokemon.name?.capitalize ?? '',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 5,
+              top: 5,
+              child: Text(
+                widget.thisPokemon.name?.capitalize ?? '',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
               ),
-              Row(
+            ),
+            Positioned(
+              left: 5,
+              top: 35,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Column(children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 0, 5),
-                      child: PillContainerWidget(
-                        type: thisTileTypes?.subTypes?.first.type?.name,
-                        color: typeDetailsPageBackgroundColor,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 5),
-                      child: Visibility(
-                        visible: thisTileTypes?.subTypes?.last.type?.name != thisTileTypes?.subTypes?.first.type?.name,
-                        child: PillContainerWidget(
-                          type: thisTileTypes?.subTypes?.last.type?.name ?? '',
-                          color: typeDetailsPageBackgroundColor,
-                        ),
-                      ),
-                    )
-                  ]),
-                  Container(
-                    child: Image.network(
-                      '$pokemonImgUrl${thisTileTypes?.id}.png',
-                      height: 80,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) {
-                        return CircularProgressIndicator();
-                      },
-                    ),
+                children: [
+                  PillContainerWidget(
+                    type: thisTileTypes?.subTypes?.first.type?.name,
+                    color: typeDetailsPageBackgroundColor,
                   ),
+                  SizedBox(height: 5),
+                  Visibility(
+                    visible: thisTileTypes?.subTypes?.last.type?.name != thisTileTypes?.subTypes?.first.type?.name,
+                    child: PillContainerWidget(
+                      type: thisTileTypes?.subTypes?.last.type?.name ?? '',
+                      color: typeDetailsPageBackgroundColor,
+                    ),
+                  )
                 ],
               ),
-            ],
-          ),
-          const SizedBox(height: 15),
-        ]),
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Image.network(
+                '$pokemonImgUrl${thisTileTypes?.id}.png',
+                width: 115,
+                height: 115,
+                errorBuilder: (_, __, ___) {
+                  return SpinKitSpinningLines(
+                    size: 50.0,
+                    color: Colors.white,
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
       onTap: () {
         Navigator.push(

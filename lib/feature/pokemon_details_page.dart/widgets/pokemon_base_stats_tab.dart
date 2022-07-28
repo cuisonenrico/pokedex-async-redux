@@ -11,7 +11,7 @@ class BaseStats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+        padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
         child: ListView.builder(
           itemCount: stat.length,
           itemBuilder: ((context, index) {

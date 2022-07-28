@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pokedex_async_redux/utilities/doubles.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
@@ -48,7 +49,7 @@ class PokemonListLoading extends StatelessWidget {
             ),
           ),
         ),
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(child: SpinKitDualRing(color: Colors.black)),
       ),
     );
   }

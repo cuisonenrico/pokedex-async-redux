@@ -1,4 +1,3 @@
-import 'package:flutter/rendering.dart';
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
@@ -36,7 +35,7 @@ class HomePage extends StatelessWidget {
           )
         ],
         backgroundColor: Colors.transparent,
-        elevation: 50,
+        elevation: 0,
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (scrollInfo) {
@@ -47,11 +46,11 @@ class HomePage extends StatelessWidget {
           }
           return false;
         },
-        child: Container(
-          margin: EdgeInsets.fromLTRB(5, 15, 10, 0),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(5, 10, 10, 0),
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
+              maxCrossAxisExtent: 220,
               childAspectRatio: 3 / 2,
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,

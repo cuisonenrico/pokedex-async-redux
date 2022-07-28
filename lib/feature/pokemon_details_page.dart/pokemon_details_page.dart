@@ -18,64 +18,70 @@ class PokemonDetails extends StatelessWidget {
         elevation: 0,
         actions: [],
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Container(
-          color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
-              child: Text(
-                pokemon.name?.capitalize ?? '',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                child: Text(
-                  '#${pokemon.id.toString().padLeft(3, '0')}',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child: Row(
-                children: [
-                  PillContainerWidget(
-                    text: pokemon.types!.first.type!.name!,
-                    color: typeDetailsPageBackgroundColor,
-                  ),
-                  if (pokemon.types?.last.type?.name != pokemon.types?.first.type?.name)
-                    PillContainerWidget(
-                      text: pokemon.types!.last.type!.name!,
-                      color: typeDetailsPageBackgroundColor,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                  child: Text(
+                    pokemon.name?.capitalize ?? '',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                      color: Colors.white,
                     ),
-                ],
-              ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: Text(
+                      '#${pokemon.id.toString().padLeft(3, '0')}',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  child: Row(
+                    children: [
+                      PillContainerWidget(
+                        text: pokemon.types!.first.type!.name!,
+                        color: typeDetailsPageBackgroundColor,
+                      ),
+                      if (pokemon.types?.last.type?.name != pokemon.types?.first.type?.name)
+                        PillContainerWidget(
+                          text: pokemon.types!.last.type!.name!,
+                          color: typeDetailsPageBackgroundColor,
+                        ),
+                    ],
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 220,
+                  child: Image.network(
+                    '$pokemonImgUrl${pokemon.id}.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => SpinKitSpinningLines(color: Colors.white),
+                  ),
+                )
+              ],
             ),
-            Container(
-              alignment: Alignment.center,
-              height: 220,
-              child: Image.network(
-                '$pokemonImgUrl${pokemon.id}.png',
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => SpinKitSpinningLines(color: Colors.white),
-              ),
-            )
-          ]),
-        ),
-        Expanded(child: TabView(pokemonDetails: pokemon))
-      ]),
+          ),
+          Expanded(child: TabView(pokemonDetails: pokemon))
+        ],
+      ),
     );
   }
 }

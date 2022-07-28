@@ -79,7 +79,7 @@ class _PokemonTileState extends State<PokemonTile> {
                 children: [
                   if (thisTileTypes?.subTypes?.first.type?.name != null)
                     PillContainerWidget(
-                      text: thisTileTypes?.subTypes?.first.type?.name,
+                      text: thisTileTypes?.subTypes?.first.type?.name ?? '',
                       color: typeDetailsPageBackgroundColor,
                     ),
                   SizedBox(height: 5),

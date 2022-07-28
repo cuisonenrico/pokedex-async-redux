@@ -1,5 +1,6 @@
 import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_about_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
 import 'package:pokedex_async_redux/feature/widgets/pill_container_widget.dart';
@@ -16,7 +17,7 @@ class PokemonDetails extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            leading: BackButton(color: Colors.black),
+            leading: BackButton(color: Colors.white),
             backgroundColor: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
             actions: [],
           ),
@@ -25,7 +26,7 @@ class PokemonDetails extends StatelessWidget {
             child: Container(
                 color: (pokemon.types?.first.type?.name ?? '').getPokemonColor,
                 child: Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(0),
                   child: Column(
                     children: [
                       Container(
@@ -38,7 +39,7 @@ class PokemonDetails extends StatelessWidget {
                                 pokemon.name?.capitalize ?? '',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 40,
                                   color: Colors.white,
                                 ),
                               ),
@@ -57,7 +58,7 @@ class PokemonDetails extends StatelessWidget {
                                   ),
                                 )),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                               child: Row(
                                 children: [
                                   PillContainerWidget(
@@ -94,19 +95,11 @@ class PokemonDetails extends StatelessWidget {
                             topRight: Radius.circular(30),
                           ),
                           color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 4,
-                              blurRadius: 7,
-                              offset: const Offset(0, 2), // changes position of shadow
-                            ),
-                          ],
                         ),
                         child: DefaultTabController(
                           length: 4,
                           child: SizedBox(
-                            height: 400,
+                            height: 301,
                             child: Column(
                               children: <Widget>[
                                 TabBar(
@@ -138,7 +131,12 @@ class PokemonDetails extends StatelessWidget {
                                 Expanded(
                                   child: TabBarView(
                                     children: <Widget>[
-                                      Container(color: Colors.white),
+                                      AboutTab(
+                                        weight: pokemon.weight!,
+                                        height: pokemon.height!,
+                                        abilities: pokemon.abilities,
+                                        baseExperience: pokemon.baseExperience!,
+                                      ),
                                       BaseStats(stat: pokemon.stats!),
                                       Container(color: Colors.white),
                                       MovesTab(

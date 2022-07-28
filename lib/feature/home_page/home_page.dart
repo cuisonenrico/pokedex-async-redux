@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
@@ -23,61 +24,40 @@ class HomePage extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: headerSize,
+            fontWeight: FontWeight.bold,
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.search),
+            color: Colors.black,
+            tooltip: 'Search Icon',
+            onPressed: () {},
+          )
+        ],
         backgroundColor: Colors.transparent,
-        elevation: 0,
+        elevation: 50,
       ),
-      body: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: Center(
-              child: TextField(
-                onChanged: (query) async {},
-                showCursor: false,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
-                    ),
-                  ),
-                  hintText: hintText,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (scrollInfo) {
+          final currentScroll = scrollInfo.metrics.pixels;
+          final maxScroll = scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
+          if (currentScroll >= maxScroll) {
+            getPokemon(true);
+          }
+          return false;
+        },
+        child: Container(
+          margin: EdgeInsets.fromLTRB(5, 15, 10, 0),
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
             ),
-          ),
-        ),
-        body: NotificationListener<ScrollNotification>(
-          onNotification: (scrollInfo) {
-            final currentScroll = scrollInfo.metrics.pixels;
-            final maxScroll = scrollInfo.metrics.maxScrollExtent - scrollExtentOffset;
-            if (currentScroll >= maxScroll) {
-              getPokemon(true);
-            }
-            return false;
-          },
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 250,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-              ),
-              itemCount: pokemon?.length ?? 0,
-              itemBuilder: (context, index) => PokemonTile(thisPokemon: pokemon![index]),
-            ),
+            itemCount: pokemon?.length ?? 0,
+            itemBuilder: (context, index) => PokemonTile(thisPokemon: pokemon![index]),
           ),
         ),
       ),

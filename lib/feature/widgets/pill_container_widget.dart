@@ -6,8 +6,8 @@ class PillContainerWidget extends StatelessWidget {
     required this.type,
     required this.color,
   });
-  final String type;
-  final Color color;
+  final String? type;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +20,7 @@ class PillContainerWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
           child: Text(
-            type.capitalize,
+            '${type?.capitalize}',
             style: TextStyle(
               fontSize: 15,
               color: Colors.white,

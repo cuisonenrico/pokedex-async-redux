@@ -1,5 +1,6 @@
 import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:pokedex_async_redux/utilities/doubles.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
 
@@ -10,7 +11,7 @@ class BaseStats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
         child: ListView.builder(
           itemCount: stat.length,
           itemBuilder: ((context, index) {
@@ -28,9 +29,13 @@ class BaseStats extends StatelessWidget {
                                 .stat
                                 ?.name
                                 ?.capitalize
-                                .replaceAll('special-attack', 'Sp-Atk')
-                                .replaceAll('special-defense', 'Sp-Def') ??
+                                .replaceAll('Special-attack', 'Sp-Atk')
+                                .replaceAll('Special-defense', 'Sp-Def') ??
                             '',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: aboutTextColor,
+                        ),
                       ),
                     ),
                   ),

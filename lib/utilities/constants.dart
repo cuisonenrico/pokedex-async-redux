@@ -27,3 +27,4 @@ const Color kSteel = Color(0xff7c8e8a);
 const Color kFairy = Color(0xfffda1c2);
 
 const Color typeDetailsPageBackgroundColor = Color.fromARGB(99, 255, 255, 255);
+const Color aboutTextColor = Color.fromRGBO(2, 2, 2, 80);

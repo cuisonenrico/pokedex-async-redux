@@ -7,9 +7,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 
 class PokemonEvolutionVmFactory extends VmFactory<AppState, PokemonEvolutionConnector> {
   @override
-  Vm fromStore() {
-    return PokemonEvolutionVm(evolutionState: _getPageState());
-  }
+  Vm fromStore() => PokemonEvolutionVm(evolutionState: _getPageState());
 
   UnionPageState<EvolutionChain?> _getPageState() {
     if (state.wait.isWaitingFor(GetEvolution.key)) {

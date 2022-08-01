@@ -31,27 +31,39 @@ class TabView extends StatelessWidget {
                 indicatorColor: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
                 tabs: <Widget>[
                   Tab(
-                    child: Text(
-                      pokemonDetailsTabs[0],
-                      style: TextStyle(color: Colors.black),
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        pokemonDetailsTabs[0],
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ),
                   Tab(
-                    child: Text(
-                      pokemonDetailsTabs[1],
-                      style: TextStyle(color: Colors.black),
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        pokemonDetailsTabs[1],
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ),
                   Tab(
-                    child: Text(
-                      pokemonDetailsTabs[2],
-                      style: TextStyle(color: Colors.black),
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        pokemonDetailsTabs[2],
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ),
                   Tab(
-                    child: Text(
-                      pokemonDetailsTabs[3],
-                      style: TextStyle(color: Colors.black),
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        pokemonDetailsTabs[3],
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ),
                 ],

@@ -12,21 +12,26 @@ class EvolutionTab extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(5),
       child: SingleChildScrollView(
-        child: Wrap(
-          children: [
-            PokemonEvolutionWidget(
-              thisSpecies: <Species>[thisPokeEvo.evolutionOne!],
-              arrowCheck: false,
-            ),
-            PokemonEvolutionWidget(
-              thisSpecies: thisPokeEvo.evolutionTwo,
-              arrowCheck: true,
-            ),
-            PokemonEvolutionWidget(
-              thisSpecies: thisPokeEvo.evolutionThree,
-              arrowCheck: true,
-            ),
-          ],
+        child: Center(
+          child: Wrap(
+            children: [
+              PokemonEvolutionTabWidget(thisSpecies: <Species>[thisPokeEvo.evolutionOne!]),
+              if (thisPokeEvo.evolutionTwo.isNotEmpty)
+                Container(
+                  height: 50,
+                  width: 50,
+                  child: Icon(Icons.arrow_right_outlined),
+                ),
+              PokemonEvolutionTabWidget(thisSpecies: thisPokeEvo.evolutionTwo),
+              if (thisPokeEvo.evolutionThree.isNotEmpty)
+                Container(
+                  height: 50,
+                  width: 50,
+                  child: Icon(Icons.arrow_right_outlined),
+                ),
+              PokemonEvolutionTabWidget(thisSpecies: thisPokeEvo.evolutionThree),
+            ],
+          ),
         ),
       ),
     );

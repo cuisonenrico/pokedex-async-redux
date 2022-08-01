@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/api/models/evolution_chain_model.dart';
+import 'package:pokedex_async_redux/api/models/species_model.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/evolution_tab/widgets/pokemon_evolution_tab_widget.dart';
 
 class EvolutionTab extends StatelessWidget {
@@ -13,30 +14,17 @@ class EvolutionTab extends StatelessWidget {
       child: SingleChildScrollView(
         child: Wrap(
           children: [
-            Container(
-              height: 80,
-              width: 80,
-              child: PokemonEvolutionWidget(thisSpecies: thisPokeEvo.evolutionOne),
+            PokemonEvolutionWidget(
+              thisSpecies: <Species>[thisPokeEvo.evolutionOne!],
+              arrowCheck: false,
             ),
-            thisPokeEvo.evolutionTwo.isNotEmpty
-                ? Container(
-                    width: 50,
-                    height: 50,
-                    child: Icon(Icons.arrow_right_outlined),
-                  )
-                : SizedBox(),
-            Column(
-              children: thisPokeEvo.evolutionTwo.map((evo2) => PokemonEvolutionWidget(thisSpecies: evo2)).toList(),
+            PokemonEvolutionWidget(
+              thisSpecies: thisPokeEvo.evolutionTwo,
+              arrowCheck: true,
             ),
-            thisPokeEvo.evolutionThree.isNotEmpty
-                ? Container(
-                    width: 50,
-                    height: 50,
-                    child: Icon(Icons.arrow_right_outlined),
-                  )
-                : SizedBox(),
-            Column(
-              children: thisPokeEvo.evolutionThree.map((evo3) => PokemonEvolutionWidget(thisSpecies: evo3)).toList(),
+            PokemonEvolutionWidget(
+              thisSpecies: thisPokeEvo.evolutionThree,
+              arrowCheck: true,
             ),
           ],
         ),

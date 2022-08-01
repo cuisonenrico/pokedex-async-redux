@@ -8,9 +8,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 class PokemonEvolutionVmFactory extends VmFactory<AppState, PokemonEvolutionConnector> {
   @override
   Vm fromStore() {
-    return PokemonEvolutionVm(
-      evolutionState: _getPageState(),
-    );
+    return PokemonEvolutionVm(evolutionState: _getPageState());
   }
 
   UnionPageState<EvolutionChain?> _getPageState() {
@@ -25,8 +23,6 @@ class PokemonEvolutionVmFactory extends VmFactory<AppState, PokemonEvolutionConn
 }
 
 class PokemonEvolutionVm extends Vm {
-  PokemonEvolutionVm({
-    required this.evolutionState,
-  }) : super(equals: [evolutionState]);
+  PokemonEvolutionVm({required this.evolutionState}) : super(equals: [evolutionState]);
   final UnionPageState<EvolutionChain?> evolutionState;
 }

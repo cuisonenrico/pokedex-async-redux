@@ -37,7 +37,7 @@ class GetEvolution extends LoadingAction {
   final String? url;
   @override
   Future<AppState> reduce() async {
-    final evolutionResponse = await EvoluttionHandler.getEvolution(url);
+    final evolutionResponse = await EvolutionHandler.getEvolution(url);
     return state.copyWith(evolution: evolutionResponse);
   }
 }

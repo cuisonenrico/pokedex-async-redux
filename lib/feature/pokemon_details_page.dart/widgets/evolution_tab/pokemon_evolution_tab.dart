@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/api/models/evolution_chain_model.dart';
-import 'package:pokedex_async_redux/utilities/constants.dart';
-import 'package:pokedex_async_redux/utilities/extensions.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/evolution_tab/widgets/pokemon_evolution_tab_widget.dart';
 
 class EvolutionTab extends StatelessWidget {
   const EvolutionTab({required this.thisPokeEvo});
@@ -17,62 +16,17 @@ class EvolutionTab extends StatelessWidget {
             Container(
               height: 80,
               width: 80,
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    child: Image.network(
-                      '$pokemonImgUrl${thisPokeEvo.evolutionOne?.id}.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 15,
-                    left: 5,
-                    child: Text('#${thisPokeEvo.evolutionOne?.id.toString().padLeft(3, '0')}'),
-                  ),
-                  Positioned(
-                    bottom: 2,
-                    left: 5,
-                    child: Text('${thisPokeEvo.evolutionOne?.name.toString().capitalize ?? ''}'),
+              child: PokemonEvolutionWidget(thisSpecies: thisPokeEvo.evolutionOne),
+            ),
+            thisPokeEvo.evolutionTwo.isNotEmpty
+                ? Container(
+                    width: 50,
+                    height: 50,
+                    child: Icon(Icons.arrow_right_outlined),
                   )
-                ],
-              ),
-            ),
-            Container(
-              width: 50,
-              height: 50,
-              child: Icon(Icons.arrow_right_outlined),
-            ),
+                : SizedBox(),
             Column(
-              children: thisPokeEvo.evolutionTwo
-                  .map(
-                    (e) => Container(
-                      height: 80,
-                      width: 80,
-                      child: Stack(
-                        children: [
-                          Image.network(
-                            '$pokemonImgUrl${e.id}.png',
-                            width: 50,
-                            height: 50,
-                          ),
-                          Positioned(
-                            bottom: 15,
-                            left: 5,
-                            child: Text('#${e.id.toString().padLeft(3, '0')}'),
-                          ),
-                          Positioned(
-                            bottom: 2,
-                            left: 5,
-                            child: Text('${e.name.toString().capitalize}'),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                  .toList(),
+              children: thisPokeEvo.evolutionTwo.map((evo2) => PokemonEvolutionWidget(thisSpecies: evo2)).toList(),
             ),
             thisPokeEvo.evolutionThree != null
                 ? Container(
@@ -82,29 +36,7 @@ class EvolutionTab extends StatelessWidget {
                   )
                 : SizedBox(),
             thisPokeEvo.evolutionThree != null
-                ? Container(
-                    height: 80,
-                    width: 80,
-                    child: Stack(
-                      children: [
-                        Image.network(
-                          '$pokemonImgUrl${thisPokeEvo.evolutionThree?.id}.png',
-                          width: 50,
-                          height: 50,
-                        ),
-                        Positioned(
-                          bottom: 15,
-                          left: 5,
-                          child: Text('#${thisPokeEvo.evolutionThree?.id.toString().padLeft(3, '0')}'),
-                        ),
-                        Positioned(
-                          bottom: 2,
-                          left: 5,
-                          child: Text('${thisPokeEvo.evolutionThree?.name.toString().capitalize}'),
-                        )
-                      ],
-                    ),
-                  )
+                ? PokemonEvolutionWidget(thisSpecies: thisPokeEvo.evolutionThree)
                 : Container()
           ],
         ),

@@ -4,7 +4,7 @@ import 'package:pokedex_async_redux/api/models/evolution_chain_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokedex_async_redux/api/models/species_model.dart';
 
-class EvoluttionHandler {
+class EvolutionHandler {
   static Future<EvolutionChain?> getEvolution(String? url) async {
     var response = http.Response('', 100);
     try {

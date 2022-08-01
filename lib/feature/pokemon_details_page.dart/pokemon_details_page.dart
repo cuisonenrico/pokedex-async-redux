@@ -79,7 +79,7 @@ class PokemonDetails extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(child: TabView(pokemonDetails: pokemon))
+          Expanded(child: PokemonTabView(pokemonDetails: pokemon))
         ],
       ),
     );

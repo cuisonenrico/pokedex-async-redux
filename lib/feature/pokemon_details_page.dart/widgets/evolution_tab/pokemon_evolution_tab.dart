@@ -18,11 +18,14 @@ class EvolutionTab extends StatelessWidget {
           alignment: WrapAlignment.center,
           children: [
             PokemonEvolutionTabWidget(thisSpecies: <Species>[thisPokeEvo.evolutionOne!]),
-            if (thisPokeEvo.evolutionTwo.isNotEmpty) Icon(Icons.arrow_right_outlined),
-            if (thisPokeEvo.evolutionTwo.isNotEmpty) PokemonEvolutionTabWidget(thisSpecies: thisPokeEvo.evolutionTwo),
-            if (thisPokeEvo.evolutionThree.isNotEmpty) Icon(Icons.arrow_right_outlined),
-            if (thisPokeEvo.evolutionThree.isNotEmpty)
+            if (thisPokeEvo.evolutionTwo.isNotEmpty) ...[
+              Icon(Icons.arrow_right_outlined),
+              PokemonEvolutionTabWidget(thisSpecies: thisPokeEvo.evolutionTwo),
+            ],
+            if (thisPokeEvo.evolutionThree.isNotEmpty) ...[
+              Icon(Icons.arrow_right_outlined),
               PokemonEvolutionTabWidget(thisSpecies: thisPokeEvo.evolutionThree),
+            ],
           ],
         ),
       ),

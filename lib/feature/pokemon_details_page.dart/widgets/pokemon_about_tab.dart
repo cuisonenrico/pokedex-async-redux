@@ -11,8 +11,10 @@ class AboutTab extends StatelessWidget {
     required this.abilities,
     required this.baseExperience,
   });
-  final int height, weight, baseExperience;
-  final List<Ability>? abilities;
+  final int height;
+  final int weight;
+  final int baseExperience;
+  final List<Ability> abilities;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,7 @@ class AboutTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Flexible(child: Text(abilities!.map((e) => e.ability?.name?.capitalize ?? '').toList().join(', '))),
+                Flexible(child: Text(abilities.map((e) => e.ability?.name?.capitalize ?? '').toList().join(', '))),
               ],
             ),
           ),

@@ -4,11 +4,12 @@ import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/ev
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_about_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_info_tabs.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
-class TabView extends StatelessWidget {
-  const TabView({required this.pokemonDetails});
+class PokemonTabView extends StatelessWidget {
+  const PokemonTabView({required this.pokemonDetails});
   final DetailsPokemon pokemonDetails;
 
   @override
@@ -29,44 +30,7 @@ class TabView extends StatelessWidget {
             children: [
               TabBar(
                 indicatorColor: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
-                tabs: <Widget>[
-                  Tab(
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        pokemonDetailsTabs[0],
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        pokemonDetailsTabs[1],
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        pokemonDetailsTabs[2],
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        pokemonDetailsTabs[3],
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ),
-                ],
+                tabs: pokemonDetailsTabs.map((e) => PokemonInfoTabs(tab: e)).toList(),
               ),
               Expanded(
                 child: TabBarView(
@@ -74,7 +38,7 @@ class TabView extends StatelessWidget {
                     AboutTab(
                       weight: pokemonDetails.weight ?? 0,
                       height: pokemonDetails.height ?? 0,
-                      abilities: pokemonDetails.abilities,
+                      abilities: pokemonDetails.abilities ?? [],
                       baseExperience: pokemonDetails.baseExperience ?? 0,
                     ),
                     BaseStats(stat: pokemonDetails.stats),

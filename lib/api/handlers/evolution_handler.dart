@@ -19,17 +19,17 @@ class EvolutionHandler {
       if (evoChainResponse.statusCode == 200) {
         final listEvolution = jsonDecode(evoChainResponse.body);
         List evolutionList = listEvolution['chain']['evolves_to'];
-        var evo3;
-        //checks if there is 3rd evolution
+        var evo3 = <Species>[];
+        //Checks if there is 3rd evolution // adds to 'evo3 'list
         if (evolutionList.isNotEmpty) {
           evolutionList.forEach((element) {
             if (element['evolves_to'] != null) {
               List checkList2 = element['evolves_to'];
               checkList2.forEach((species) {
-                evo3 = Species(
+                evo3.add(Species(
                   name: species['species']['name'],
                   id: species['species']['url'].split('/')[6],
-                );
+                ));
               });
             }
           });

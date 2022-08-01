@@ -9,7 +9,7 @@ class EvolutionChain with _$EvolutionChain {
   factory EvolutionChain({
     @JsonKey(name: 'evolutionOne') Species? evolutionOne,
     @Default(<Species>[]) @JsonKey(name: 'evolutionTwo') List<Species> evolutionTwo,
-    @JsonKey(name: 'evolutionThree') Species? evolutionThree,
+    @Default(<Species>[]) @JsonKey(name: 'evolutionThree') List<Species> evolutionThree,
   }) = _EvolutionChain;
 
   factory EvolutionChain.fromJson(Map<String, dynamic> json) => _$EvolutionChainFromJson(json);

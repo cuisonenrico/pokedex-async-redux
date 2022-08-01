@@ -28,16 +28,16 @@ class EvolutionTab extends StatelessWidget {
             Column(
               children: thisPokeEvo.evolutionTwo.map((evo2) => PokemonEvolutionWidget(thisSpecies: evo2)).toList(),
             ),
-            thisPokeEvo.evolutionThree != null
+            thisPokeEvo.evolutionThree.isNotEmpty
                 ? Container(
                     width: 50,
                     height: 50,
                     child: Icon(Icons.arrow_right_outlined),
                   )
                 : SizedBox(),
-            thisPokeEvo.evolutionThree != null
-                ? PokemonEvolutionWidget(thisSpecies: thisPokeEvo.evolutionThree)
-                : Container()
+            Column(
+              children: thisPokeEvo.evolutionThree.map((evo3) => PokemonEvolutionWidget(thisSpecies: evo3)).toList(),
+            ),
           ],
         ),
       ),

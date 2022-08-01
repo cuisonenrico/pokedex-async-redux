@@ -1,5 +1,6 @@
 import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/evolution_tab/pokemon_evolution_tab_connector.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_about_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_base_stats_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/pokemon_moves_tab.dart';
@@ -65,7 +66,7 @@ class TabView extends StatelessWidget {
                       baseExperience: pokemonDetails.baseExperience ?? 0,
                     ),
                     BaseStats(stat: pokemonDetails.stats),
-                    Container(color: Colors.white),
+                    PokemonEvolutionConnector(pokemonDetails.species?.id),
                     MovesTab(
                       moves: pokemonDetails.moves,
                       color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,

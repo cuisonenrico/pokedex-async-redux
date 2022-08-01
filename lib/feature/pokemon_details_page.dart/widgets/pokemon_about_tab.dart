@@ -85,7 +85,7 @@ class AboutTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(abilities!.map((e) => e.ability?.name?.capitalize ?? '').toList().join(', ')),
+                Flexible(child: Text(abilities!.map((e) => e.ability?.name?.capitalize ?? '').toList().join(', '))),
               ],
             ),
           ),

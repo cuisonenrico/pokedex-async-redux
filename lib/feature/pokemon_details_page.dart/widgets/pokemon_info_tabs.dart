@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class PokemonInfoTabs extends StatelessWidget {
   const PokemonInfoTabs({
-    required this.tab,
+    required this.tabTitle,
   });
-  final String tab;
+  final String tabTitle;
   @override
   Widget build(BuildContext context) {
     return Tab(
       child: FittedBox(
         fit: BoxFit.fitWidth,
         child: Text(
-          tab,
+          tabTitle,
           style: TextStyle(color: Colors.black),
         ),
       ),

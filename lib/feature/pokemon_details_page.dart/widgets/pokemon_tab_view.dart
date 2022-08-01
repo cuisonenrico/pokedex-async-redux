@@ -30,7 +30,7 @@ class PokemonTabView extends StatelessWidget {
             children: [
               TabBar(
                 indicatorColor: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
-                tabs: pokemonDetailsTabs.map((e) => PokemonInfoTabs(tab: e)).toList(),
+                tabs: pokemonDetailsTabs.map((tab) => PokemonInfoTabs(tabTitle: tab)).toList(),
               ),
               Expanded(
                 child: TabBarView(

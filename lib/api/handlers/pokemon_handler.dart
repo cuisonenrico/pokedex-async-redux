@@ -1,22 +1,42 @@
 import 'dart:convert';
-
-import 'package:pokedex_async_redux/api/models/pokemon_response_model.dart';
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:http/http.dart' as http;
 
 class PokemonHandler {
-  static Future<PokemonResponse?> getPokemons(String? nextPage) async {
+  static Future<List<Pokemon>?> getPokemons() async {
     var response = http.Response('', 100);
     try {
-      response = await http.get(Uri.tryParse(nextPage ?? pokemonUrl) ?? Uri());
+      response = await http.get(Uri.tryParse(pokemonUrl) ?? Uri());
     } catch (e) {
       print(e);
     }
     if (response.statusCode == 200) {
-      final nextPageResult = jsonDecode(response.body);
-      List pokemonMap = nextPageResult['results'];
-      return PokemonResponse(next: nextPageResult['next'], result: pokemonMap.map((e) => Pokemon.fromJson(e)).toList());
+      final result = jsonDecode(response.body);
+      List pokemonMap = result['results'];
+      return pokemonMap.map((e) => Pokemon.fromJson(e)).toList();
+    } else {
+      print('error');
+      return null;
+    }
+  }
+
+  static Future<List<Pokemon>?> getFiltered(String filterKey) async {
+    var response = http.Response('', 100);
+    try {
+      response = await http.get(Uri.tryParse('$pokemonTypeUri$filterKey/') ?? Uri());
+    } catch (e) {
+      print(e);
+    }
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      List filteredList = result['pokemon'];
+      return filteredList
+          .map((e) => Pokemon(
+                name: e['pokemon']['name'],
+                url: e['pokemon']['url'],
+              ))
+          .toList();
     } else {
       print('error');
       return null;

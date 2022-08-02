@@ -11,7 +11,6 @@ part 'app_state.g.dart';
 class AppState with _$AppState {
   factory AppState({
     @Default(<Pokemon>[]) @JsonKey(name: 'pokemon') List<Pokemon> pokemon,
-    @JsonKey(name: 'nextPage') String? nextPage,
     @Default(Wait.empty) @JsonKey(ignore: true, name: 'wait') Wait wait,
     @JsonKey(name: 'pokemonDetails') DetailsPokemon? pokemonDetails,
     @JsonKey(name: 'evolution') EvolutionChain? evolution,

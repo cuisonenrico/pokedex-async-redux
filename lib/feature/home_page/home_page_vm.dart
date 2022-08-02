@@ -8,10 +8,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 class HomePageVmFactory extends VmFactory<AppState, HomePageConnector> {
   @override
   Vm fromStore() {
-    return HomePageVm(
-      getPokemon: _getPokemon,
-      homePageState: _getPageState(),
-    );
+    return HomePageVm(homePageState: _getPageState());
   }
 
   UnionPageState<List<Pokemon>> _getPageState() {
@@ -23,16 +20,10 @@ class HomePageVmFactory extends VmFactory<AppState, HomePageConnector> {
       return UnionPageState.error("Can't load Pokemons");
     }
   }
-
-  void _getPokemon(bool? isScrolling) => dispatch(GetPokemonList(isScrolling: isScrolling));
 }
 
 class HomePageVm extends Vm {
-  HomePageVm({
-    required this.getPokemon,
-    required this.homePageState,
-  }) : super(equals: [homePageState]);
+  HomePageVm({required this.homePageState}) : super(equals: [homePageState]);
 
-  final Function(bool? isScrolling) getPokemon;
   final UnionPageState<List<Pokemon>> homePageState;
 }

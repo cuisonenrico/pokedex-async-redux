@@ -7,16 +7,11 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 
 class GetPokemonList extends LoadingAction {
   static const key = 'get_pokemon_list_key';
-  GetPokemonList({this.isScrolling = false}) : super(actionKey: isScrolling ? null : key);
-  final isScrolling;
+  GetPokemonList() : super(actionKey: key);
   @override
   Future<AppState> reduce() async {
-    final currentList = state.pokemon;
-    final pokemonResponse = await PokemonHandler.getPokemons(state.nextPage);
-    return state.copyWith(
-      pokemon: [...currentList, ...pokemonResponse?.result ?? []],
-      nextPage: pokemonResponse?.next,
-    );
+    final pokemonResponse = await PokemonHandler.getPokemons();
+    return state.copyWith(pokemon: pokemonResponse ?? []);
   }
 }
 
@@ -39,5 +34,20 @@ class GetEvolution extends LoadingAction {
   Future<AppState> reduce() async {
     final evolutionResponse = await EvolutionHandler.getEvolution(url);
     return state.copyWith(evolution: evolutionResponse);
+  }
+}
+
+class GetFilterList extends LoadingAction {
+  static const key = 'get_filtered_list_key';
+  GetFilterList({required this.filterKey}) : super(actionKey: key);
+  final String filterKey;
+  @override
+  Future<AppState> reduce() async {
+    if (filterKey == 'clear') {
+      dispatch(GetPokemonList());
+      return state.copyWith();
+    }
+    final filteredRes = await PokemonHandler.getFiltered(filterKey);
+    return state.copyWith(pokemon: filteredRes!);
   }
 }

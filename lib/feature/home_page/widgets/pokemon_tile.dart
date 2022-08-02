@@ -12,7 +12,10 @@ import 'package:pokedex_async_redux/utilities/extensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PokemonTile extends StatefulWidget {
-  const PokemonTile({required this.thisPokemon});
+  const PokemonTile({
+    required this.thisPokemon,
+    Key? key,
+  }) : super(key: key);
   final Pokemon thisPokemon;
 
   @override
@@ -46,6 +49,7 @@ class _PokemonTileState extends State<PokemonTile> {
         setState(() {});
       }
     });
+
     super.initState();
   }
 
@@ -55,7 +59,7 @@ class _PokemonTileState extends State<PokemonTile> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: thisTileTypes?.subTypes?.first.type?.name!.getPokemonColor ?? Colors.white,
+          color: thisTileTypes?.subTypes?.first.type?.name!.getPokemonColor ?? Color.fromARGB(179, 158, 158, 158),
         ),
         child: Stack(
           children: [

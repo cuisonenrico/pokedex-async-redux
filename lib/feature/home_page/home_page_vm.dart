@@ -7,9 +7,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 
 class HomePageVmFactory extends VmFactory<AppState, HomePageConnector> {
   @override
-  Vm fromStore() {
-    return HomePageVm(homePageState: _getPageState());
-  }
+  Vm fromStore() => HomePageVm(homePageState: _getPageState());
 
   UnionPageState<List<Pokemon>> _getPageState() {
     if (state.wait.isWaitingFor(GetPokemonList.key)) {

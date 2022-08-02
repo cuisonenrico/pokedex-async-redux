@@ -43,10 +43,6 @@ class GetFilterList extends LoadingAction {
   final String filterKey;
   @override
   Future<AppState> reduce() async {
-    if (filterKey == 'clear') {
-      dispatch(GetPokemonList());
-      return state.copyWith();
-    }
     final filteredRes = await PokemonHandler.getFiltered(filterKey);
     return state.copyWith(pokemon: filteredRes!);
   }

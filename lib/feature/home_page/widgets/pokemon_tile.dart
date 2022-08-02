@@ -64,6 +64,16 @@ class _PokemonTileState extends State<PokemonTile> {
         child: Stack(
           children: [
             Positioned(
+              bottom: 0,
+              right: 0,
+              child: Image.network(
+                '$pokemonImgUrl${thisTileTypes?.id}.png',
+                width: 120,
+                height: 120,
+                errorBuilder: (_, __, ___) => SpinKitSpinningLines(color: Colors.white),
+              ),
+            ),
+            Positioned(
               left: 5,
               top: 5,
               child: Text(
@@ -96,16 +106,6 @@ class _PokemonTileState extends State<PokemonTile> {
                 ],
               ),
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Image.network(
-                '$pokemonImgUrl${thisTileTypes?.id}.png',
-                width: 115,
-                height: 115,
-                errorBuilder: (_, __, ___) => SpinKitSpinningLines(color: Colors.white),
-              ),
-            )
           ],
         ),
       ),

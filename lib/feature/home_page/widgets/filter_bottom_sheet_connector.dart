@@ -1,4 +1,5 @@
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/filter_bottom_sheet.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/filter_bottom_sheet_vm.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
@@ -11,6 +12,12 @@ class FilterBottomSheetConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, FilterBottomSheetVm>(
         vm: () => FilterBottomSheetVmFactory(),
-        builder: (context, vm) => FilterBottomSheet(onFilterTap: vm.onFilterTap));
+        builder: (context, vm) {
+          return vm.onFilterTapState.when(
+            (filterFunc) => FilterBottomSheet(onFilterTap: filterFunc!),
+            loading: () => SpinKitDualRing(color: Colors.black),
+            error: (err) => Center(child: Text(err!)),
+          );
+        });
   }
 }

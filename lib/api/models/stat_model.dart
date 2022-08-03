@@ -7,9 +7,9 @@ part 'stat_model.g.dart';
 @freezed
 class Stat with _$Stat {
   factory Stat({
-    @JsonKey(name: 'baseStat') int? baseStat,
-    @JsonKey(name: 'effort') int? effort,
-    @JsonKey(name: 'stat') DetailedStat? stat,
+    int? baseStat,
+    int? effort,
+    DetailedStat? stat,
   }) = _Stat;
 
   factory Stat.fromJson(Map<String, dynamic> json) => _$StatFromJson(json);

@@ -13,17 +13,18 @@ class PokemonFilteredPageConnector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, FilteredPageVm>(
-        vm: () => FilteredPageVmFactory(),
-        onInit: (store) async => store.dispatch(GetFilterList(filterKey: filterKey)),
-        builder: (context, vm) {
-          return vm.filteredPageState.when(
-            (pokemonList) => PokemonFilteredPage(
-              pokemon: pokemonList!,
-              filterKey: vm.filterKey,
-            ),
-            loading: () => PokemonListLoading(),
-            error: (err) => Center(child: Text(err!)),
-          );
-        });
+      vm: () => FilteredPageVmFactory(),
+      onInit: (store) async => store.dispatch(GetFilterList(filterKey: filterKey)),
+      builder: (context, vm) {
+        return vm.filteredPageState.when(
+          (pokemonList) => PokemonFilteredPage(
+            pokemon: pokemonList!,
+            filterKey: vm.filterKey,
+          ),
+          loading: () => PokemonListLoading(),
+          error: (err) => Center(child: Text(err!)),
+        );
+      },
+    );
   }
 }

@@ -54,17 +54,13 @@ class PokemonDetails extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                   child: Row(
-                    children: [
-                      PillContainerWidget(
-                        text: pokemon.types!.first.type!.name!,
-                        color: typeDetailsPageBackgroundColor,
-                      ),
-                      if (pokemon.types?.last.type?.name != pokemon.types?.first.type?.name)
-                        PillContainerWidget(
-                          text: pokemon.types!.last.type!.name!,
-                          color: typeDetailsPageBackgroundColor,
-                        ),
-                    ],
+                    children: pokemon.types
+                            ?.map((e) => PillContainerWidget(
+                                  text: e.type!.name,
+                                  color: typeDetailsPageBackgroundColor,
+                                ))
+                            .toList() ??
+                        [],
                   ),
                 ),
                 Container(

@@ -15,7 +15,7 @@ class AppState with _$AppState {
     EvolutionChain? evolution,
     @Default(<Pokemon>[]) List<Pokemon> filteredPokemons,
     @Default('') String filterKey,
-    @Default(Wait.empty) Wait wait,
+    @Default(Wait.empty) @JsonKey(name: 'wait', ignore: true) Wait wait,
   }) = _AppState;
 
   factory AppState.init() => AppState(wait: Wait());

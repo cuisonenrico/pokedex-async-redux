@@ -5,9 +5,9 @@ import 'package:pokedex_async_redux/api/handlers/pokemon_handler.dart';
 import 'package:pokedex_async_redux/state/actions/actions.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
 
-class GetPokemonList extends LoadingAction {
+class GetPokemonListAction extends LoadingAction {
   static const key = 'get_pokemon_list_key';
-  GetPokemonList() : super(actionKey: key);
+  GetPokemonListAction() : super(actionKey: key);
   @override
   Future<AppState> reduce() async {
     final pokemonResponse = await PokemonHandler.getPokemons();
@@ -15,9 +15,9 @@ class GetPokemonList extends LoadingAction {
   }
 }
 
-class GetPokemonDetails extends LoadingAction {
+class GetPokemonDetailsAction extends LoadingAction {
   static const key = 'get_pokemon_details_key';
-  GetPokemonDetails(this.url) : super(actionKey: key);
+  GetPokemonDetailsAction(this.url) : super(actionKey: key);
   final String url;
   @override
   Future<AppState> reduce() async {
@@ -26,9 +26,9 @@ class GetPokemonDetails extends LoadingAction {
   }
 }
 
-class GetEvolution extends LoadingAction {
+class GetEvolutionAction extends LoadingAction {
   static const key = 'get_pokemon_evolution_key';
-  GetEvolution(this.url) : super(actionKey: key);
+  GetEvolutionAction(this.url) : super(actionKey: key);
   final String? url;
   @override
   Future<AppState> reduce() async {
@@ -37,9 +37,9 @@ class GetEvolution extends LoadingAction {
   }
 }
 
-class GetFilterList extends LoadingAction {
+class GetFilterListAction extends LoadingAction {
   static const key = 'get_filtered_list_key';
-  GetFilterList({required this.filterKey}) : super(actionKey: key);
+  GetFilterListAction({required this.filterKey}) : super(actionKey: key);
   final String filterKey;
   @override
   Future<AppState> reduce() async {

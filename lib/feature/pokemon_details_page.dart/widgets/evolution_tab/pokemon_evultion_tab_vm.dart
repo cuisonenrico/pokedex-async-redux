@@ -10,7 +10,7 @@ class PokemonEvolutionVmFactory extends VmFactory<AppState, PokemonEvolutionConn
   Vm fromStore() => PokemonEvolutionVm(evolutionState: _getPageState());
 
   UnionPageState<EvolutionChain?> _getPageState() {
-    if (state.wait.isWaitingFor(GetEvolution.key)) {
+    if (state.wait.isWaitingFor(GetEvolutionAction.key)) {
       return UnionPageState.loading();
     } else if (state.evolution != null) {
       return UnionPageState(state.evolution);

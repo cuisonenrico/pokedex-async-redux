@@ -7,7 +7,7 @@ class FilterBottomSheetVmFactory extends VmFactory<AppState, FilterBottomSheetCo
   @override
   Vm fromStore() => FilterBottomSheetVm(onFilterTap: _getFilteredList);
 
-  void _getFilteredList(String filterType) => GetFilterList(filterKey: filterType);
+  void _getFilteredList(String filterType) => GetFilterListAction(filterKey: filterType);
 }
 
 class FilterBottomSheetVm extends Vm {

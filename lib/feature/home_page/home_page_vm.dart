@@ -10,7 +10,7 @@ class HomePageVmFactory extends VmFactory<AppState, HomePageConnector> {
   Vm fromStore() => HomePageVm(homePageState: _getPageState());
 
   UnionPageState<List<Pokemon>> _getPageState() {
-    if (state.wait.isWaitingFor(GetPokemonList.key)) {
+    if (state.wait.isWaitingFor(GetPokemonListAction.key)) {
       return UnionPageState.loading();
     } else if (state.pokemon.isNotEmpty) {
       return UnionPageState(state.pokemon);

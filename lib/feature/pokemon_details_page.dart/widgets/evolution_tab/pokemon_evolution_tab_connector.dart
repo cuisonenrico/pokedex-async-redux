@@ -13,7 +13,7 @@ class PokemonEvolutionConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonEvolutionVm>(
         vm: () => PokemonEvolutionVmFactory(),
-        onInit: (store) async => store.dispatch(GetEvolution(url)),
+        onInit: (store) async => store.dispatch(GetEvolutionAction(url)),
         builder: (context, vm) {
           return vm.evolutionState.when(
             (value) => EvolutionTab(thisPokeEvo: value!),

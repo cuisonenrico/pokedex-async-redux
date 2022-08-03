@@ -14,7 +14,7 @@ class PokemonDetailsConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonDetailsVm>(
         vm: () => PokemonDetailsVmFactory(),
-        onInit: (store) async => store.dispatch(GetPokemonDetails(url)),
+        onInit: (store) async => store.dispatch(GetPokemonDetailsAction(url)),
         builder: (context, vm) {
           return vm.pokemonDetailsState.when(
             (pokemonDetails) => PokemonDetails(pokemon: pokemonDetails!),

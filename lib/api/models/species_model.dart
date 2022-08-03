@@ -6,8 +6,8 @@ part 'species_model.g.dart';
 @freezed
 class Species with _$Species {
   factory Species({
-    @JsonKey(name: 'name') String? name,
-    @JsonKey(name: 'id') String? id,
+    String? name,
+    String? id,
   }) = _Species;
 
   factory Species.fromJson(Map<String, dynamic> json) => _$SpeciesFromJson(json);

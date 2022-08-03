@@ -16,10 +16,7 @@ class HomePageConnector extends StatelessWidget {
         onInit: (store) async => store.dispatch(GetPokemonList()),
         builder: (context, vm) {
           return vm.homePageState.when(
-            (pokemonList) => HomePage(
-              getPokemon: vm.getPokemon,
-              pokemon: pokemonList!,
-            ),
+            (pokemonList) => HomePage(pokemon: pokemonList!),
             loading: () => PokemonListLoading(),
             error: (err) => Center(child: Text(err!)),
           );

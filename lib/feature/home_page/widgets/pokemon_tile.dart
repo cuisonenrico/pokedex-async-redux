@@ -90,8 +90,8 @@ class _PokemonTileState extends State<PokemonTile> {
               top: 35,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: thisTileTypes?.subTypes!
-                        .map((e) => Padding(
+                children: thisTileTypes?.subTypes
+                        ?.map((e) => Padding(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                               child: PillContainerWidget(
                                 text: e.type!.name,

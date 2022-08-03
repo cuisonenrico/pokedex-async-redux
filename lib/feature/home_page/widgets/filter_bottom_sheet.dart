@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_filtered_connector.dart';
+import 'package:pokedex_async_redux/feature/pokemon_filtered_page/pokemon_filtered_connector.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 

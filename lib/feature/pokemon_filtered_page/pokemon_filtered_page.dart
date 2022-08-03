@@ -37,21 +37,22 @@ class PokemonFilteredPage extends StatelessWidget {
             automaticallyImplyLeading: false,
           ),
           SliverFillRemaining(
-              child: Padding(
-            padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 5,
-              childAspectRatio: 3 / 2,
-              children: pokemon
-                  .map((e) => PokemonTile(
-                        key: UniqueKey(),
-                        thisPokemon: e,
-                      ))
-                  .toList(),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
+                childAspectRatio: 3 / 2,
+                children: pokemon
+                    .map((e) => PokemonTile(
+                          key: UniqueKey(),
+                          thisPokemon: e,
+                        ))
+                    .toList(),
+              ),
             ),
-          ))
+          )
         ],
       ),
     );

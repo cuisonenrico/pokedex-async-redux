@@ -1,0 +1,42 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Lint Checks
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  tests:
+    name: flutter analyze
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v2.5.0
+        with:
+          channel: stable
+          cache: true
+          architecture: x64
+      
+      - name: Install packages 
+        run: flutter pub get
+        
+      - name: Generate freezed files
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+        
+      - name: Analyze
+        run: flutter analyze > flutter_analyze_report.txt
+
+      - name: Comment PR
+        if: ${{ failure() }} || ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          recreate: true
+          path: flutter_analyze_report.txt

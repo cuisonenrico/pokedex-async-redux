@@ -23,7 +23,7 @@ class PokemonTile extends StatefulWidget {
 }
 
 class _PokemonTileState extends State<PokemonTile> {
-  PokemonType? thisTileTypes = PokemonType();
+  PokemonType? thisTileTypes;
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -90,20 +90,16 @@ class _PokemonTileState extends State<PokemonTile> {
               top: 35,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (thisTileTypes?.subTypes?.first.type?.name != null)
-                    PillContainerWidget(
-                      text: thisTileTypes?.subTypes?.first.type?.name ?? '',
-                      color: typeDetailsPageBackgroundColor,
-                    ),
-                  SizedBox(height: 5),
-                  if ('${thisTileTypes?.subTypes?.last.type?.name ?? ''}' !=
-                      '${thisTileTypes?.subTypes?.first.type?.name ?? ''}')
-                    PillContainerWidget(
-                      text: thisTileTypes?.subTypes?.last.type?.name ?? '',
-                      color: typeDetailsPageBackgroundColor,
-                    ),
-                ],
+                children: thisTileTypes?.subTypes!
+                        .map((e) => Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                              child: PillContainerWidget(
+                                text: e.type!.name,
+                                color: typeDetailsPageBackgroundColor,
+                              ),
+                            ))
+                        .toList() ??
+                    [],
               ),
             ),
           ],

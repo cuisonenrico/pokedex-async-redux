@@ -24,5 +24,4 @@ const colorFilters = [
   'dark',
   'steel',
   'fairy',
-  'clear',
 ];

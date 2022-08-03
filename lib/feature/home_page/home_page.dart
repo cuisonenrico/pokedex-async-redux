@@ -51,14 +51,17 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 55, 153, 218),
         onPressed: () => showModalBottomSheet(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                padding: EdgeInsets.all(15),
-                child: FilterBottomSheetConnector(),
-              );
-            }),
+          anchorPoint: Offset(10, 2000),
+          constraints: BoxConstraints(maxHeight: 250, maxWidth: 380),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+          context: context,
+          builder: (BuildContext context) {
+            return Container(
+              padding: EdgeInsets.fromLTRB(15, 2, 15, 0),
+              child: FilterBottomSheetConnector(),
+            );
+          },
+        ),
         child: const Icon(Icons.filter_list),
       ),
     );

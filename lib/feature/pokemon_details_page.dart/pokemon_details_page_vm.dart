@@ -12,7 +12,7 @@ class PokemonDetailsVmFactory extends VmFactory<AppState, HomePageConnector> {
   }
 
   UnionPageState<DetailsPokemon?> _getPageState() {
-    if (state.wait.isWaitingFor(GetPokemonDetails.key)) {
+    if (state.wait.isWaitingFor(GetPokemonDetailsAction.key)) {
       return UnionPageState.loading();
     } else if (state.pokemonDetails?.id != null) {
       return UnionPageState(state.pokemonDetails);

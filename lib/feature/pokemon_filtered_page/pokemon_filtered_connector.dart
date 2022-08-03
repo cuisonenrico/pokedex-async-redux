@@ -14,7 +14,7 @@ class PokemonFilteredPageConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, FilteredPageVm>(
       vm: () => FilteredPageVmFactory(),
-      onInit: (store) async => store.dispatch(GetFilterList(filterKey: filterKey)),
+      onInit: (store) async => store.dispatch(GetFilterListAction(filterKey: filterKey)),
       builder: (context, vm) {
         return vm.filteredPageState.when(
           (pokemonList) => PokemonFilteredPage(

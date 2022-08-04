@@ -4,7 +4,10 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class PokedexApp extends StatelessWidget {
-  const PokedexApp({required this.store});
+  const PokedexApp({
+    required this.store,
+    Key? key,
+  }) : super(key: key);
 
   final Store<AppState> store;
   @override
@@ -14,7 +17,7 @@ class PokedexApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: HomePageConnector(),
+        home: const HomePageConnector(),
       ),
     );
   }

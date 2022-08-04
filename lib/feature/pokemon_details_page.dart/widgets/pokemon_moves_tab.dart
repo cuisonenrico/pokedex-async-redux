@@ -6,18 +6,19 @@ class MovesTab extends StatelessWidget {
   const MovesTab({
     required this.moves,
     required this.color,
-  });
+    Key? key,
+  }) : super(key: key);
   final List<Moves>? moves;
   final Color color;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       child: SingleChildScrollView(
         child: Wrap(
           children: moves
                   ?.map((e) => Padding(
-                        padding: EdgeInsets.all(2),
+                        padding: const EdgeInsets.all(2),
                         child: PillContainerWidget(
                           text: e.move!.name!,
                           color: color,

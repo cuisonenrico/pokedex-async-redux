@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class PokemonInfoTabs extends StatelessWidget {
   const PokemonInfoTabs({
     required this.tabTitle,
-  });
+    Key? key,
+  }) : super(key: key);
   final String tabTitle;
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class PokemonInfoTabs extends StatelessWidget {
         fit: BoxFit.fitWidth,
         child: Text(
           tabTitle,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
     );

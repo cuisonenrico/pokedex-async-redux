@@ -10,7 +10,8 @@ class AboutTab extends StatelessWidget {
     required this.weight,
     required this.abilities,
     required this.baseExperience,
-  });
+    Key? key,
+  }) : super(key: key);
   final int height;
   final int weight;
   final int baseExperience;
@@ -19,16 +20,16 @@ class AboutTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         children: [
           Align(
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Text(
                       aboutHeight,
@@ -39,7 +40,7 @@ class AboutTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 60,
                   child: Text('${height / 10} m'),
                 ),
@@ -50,9 +51,9 @@ class AboutTab extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Text(
                       aboutWeight,
@@ -63,7 +64,7 @@ class AboutTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 60,
                   child: Text('${weight / 10} kg'),
                 ),
@@ -74,9 +75,9 @@ class AboutTab extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Text(
                       aboutAbilities,
@@ -95,9 +96,9 @@ class AboutTab extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Text(
                       aboutBaseExperience,
@@ -108,7 +109,7 @@ class AboutTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 60,
                   child: Text(baseExperience.toString()),
                 ),

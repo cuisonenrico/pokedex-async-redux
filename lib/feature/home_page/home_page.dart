@@ -7,7 +7,10 @@ import 'package:pokedex_async_redux/utilities/doubles.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({required this.pokemon});
+  const HomePage({
+    required this.pokemon,
+    Key? key,
+  }) : super(key: key);
 
   final List<Pokemon> pokemon;
 
@@ -25,7 +28,7 @@ class HomePage extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             color: Colors.black,
             tooltip: 'Search Icon',
             onPressed: () => showSearch(context: context, delegate: PokemonSearchPage(pokemonList: pokemon)),
@@ -35,7 +38,7 @@ class HomePage extends StatelessWidget {
         elevation: 0,
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(5, 10, 10, 0),
+        padding: const EdgeInsets.fromLTRB(5, 10, 10, 0),
         child: GridView.count(
           crossAxisCount: 2,
           mainAxisSpacing: 5,
@@ -50,16 +53,16 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color.fromARGB(255, 55, 153, 218),
+        backgroundColor: const Color.fromARGB(255, 55, 153, 218),
         onPressed: () => showModalBottomSheet(
-          anchorPoint: Offset(10, 2000),
-          constraints: BoxConstraints(maxHeight: 250, maxWidth: 380),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+          anchorPoint: const Offset(10, 2000),
+          constraints: const BoxConstraints(maxHeight: 250, maxWidth: 380),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
           context: context,
           builder: (BuildContext context) {
             return Container(
-              padding: EdgeInsets.fromLTRB(15, 2, 15, 0),
-              child: FilterBottomSheetConnector(),
+              padding: const EdgeInsets.fromLTRB(15, 2, 15, 0),
+              child: const FilterBottomSheetConnector(),
             );
           },
         ),

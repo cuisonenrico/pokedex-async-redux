@@ -15,9 +15,9 @@ class DetailsPokemonHandler {
   static Future<DetailsPokemon?> getDetails(String url) async {
     var response = http.Response('', 100);
     try {
-      response = await http.get(Uri.tryParse('$url') ?? Uri());
+      response = await http.get(Uri.tryParse(url) ?? Uri());
     } catch (e) {
-      print(e);
+      rethrow;
     }
     if (response.statusCode == 200) {
       var endResponse = jsonDecode(response.body);
@@ -74,7 +74,6 @@ class DetailsPokemonHandler {
             .toList(),
       );
     } else {
-      print('error pokemon details');
       return null;
     }
   }

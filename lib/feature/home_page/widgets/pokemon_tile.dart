@@ -19,10 +19,10 @@ class PokemonTile extends StatefulWidget {
   final Pokemon thisPokemon;
 
   @override
-  _PokemonTileState createState() => _PokemonTileState();
+  PokemonTileState createState() => PokemonTileState();
 }
 
-class _PokemonTileState extends State<PokemonTile> {
+class PokemonTileState extends State<PokemonTile> {
   PokemonType? thisTileTypes;
   @override
   void initState() {
@@ -30,19 +30,19 @@ class _PokemonTileState extends State<PokemonTile> {
       await http.get(Uri.tryParse('${widget.thisPokemon.url}') ?? Uri()).then((value) {
         if (value.statusCode == 200) {
           var result = jsonDecode(value.body);
-          List SubTypeMap = result['types'];
+          List subTypeMap = result['types'];
           thisTileTypes = PokemonType(
             id: result['id'],
-            subTypes: SubTypeMap.map((e) => SubType(
-                  slot: result['slot'],
-                  type: SpecificType(
-                    name: e['type']['name'],
-                    url: e['type']['url'],
-                  ),
-                )).toList(),
+            subTypes: subTypeMap
+                .map((e) => SubType(
+                      slot: result['slot'],
+                      type: SpecificType(
+                        name: e['type']['name'],
+                        url: e['type']['url'],
+                      ),
+                    ))
+                .toList(),
           );
-        } else {
-          print('error');
         }
       });
       if (mounted) {
@@ -59,7 +59,7 @@ class _PokemonTileState extends State<PokemonTile> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: thisTileTypes?.subTypes?.first.type?.name!.getPokemonColor ?? Color.fromARGB(179, 158, 158, 158),
+          color: thisTileTypes?.subTypes?.first.type?.name!.getPokemonColor ?? const Color.fromARGB(179, 158, 158, 158),
         ),
         child: Stack(
           children: [
@@ -70,7 +70,7 @@ class _PokemonTileState extends State<PokemonTile> {
                 '$pokemonImgUrl${thisTileTypes?.id}.png',
                 width: 120,
                 height: 120,
-                errorBuilder: (_, __, ___) => SpinKitSpinningLines(color: Colors.white),
+                errorBuilder: (_, __, ___) => const SpinKitSpinningLines(color: Colors.white),
               ),
             ),
             Positioned(
@@ -92,7 +92,7 @@ class _PokemonTileState extends State<PokemonTile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: thisTileTypes?.subTypes
                         ?.map((e) => Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
                               child: PillContainerWidget(
                                 text: e.type!.name,
                                 color: typeDetailsPageBackgroundColor,

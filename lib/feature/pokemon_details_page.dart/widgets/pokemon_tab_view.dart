@@ -9,7 +9,10 @@ import 'package:pokedex_async_redux/utilities/extensions.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class PokemonTabView extends StatelessWidget {
-  const PokemonTabView({required this.pokemonDetails});
+  const PokemonTabView({
+    required this.pokemonDetails,
+    Key? key,
+  }) : super(key: key);
   final DetailsPokemon pokemonDetails;
 
   @override
@@ -17,7 +20,7 @@ class PokemonTabView extends StatelessWidget {
     return Container(
       color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -42,7 +45,7 @@ class PokemonTabView extends StatelessWidget {
                       baseExperience: pokemonDetails.baseExperience ?? 0,
                     ),
                     BaseStats(stat: pokemonDetails.stats),
-                    PokemonEvolutionConnector(pokemonDetails.species?.id),
+                    PokemonEvolutionConnector(url: pokemonDetails.species?.id),
                     MovesTab(
                       moves: pokemonDetails.moves,
                       color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,

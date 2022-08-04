@@ -10,7 +10,7 @@ class EvolutionHandler {
     try {
       response = await http.get(Uri.tryParse(url ?? '') ?? Uri());
     } catch (e) {
-      print(e);
+      rethrow;
     }
     if (response.statusCode == 200) {
       final evolutionChain = jsonDecode(response.body);
@@ -22,17 +22,17 @@ class EvolutionHandler {
         var evolution3 = <Species>[];
         //Checks if there is 3rd evolution // adds to 'evolution3 'list
         if (evolution2.isNotEmpty) {
-          evolution2.forEach((element) {
+          for (var element in evolution2) {
             if (element['evolves_to'] != null) {
               List evloution2List = element['evolves_to'];
-              evloution2List.forEach((species) {
+              for (var species in evloution2List) {
                 evolution3.add(Species(
                   name: species['species']['name'],
                   id: species['species']['url'].split('/')[6],
                 ));
-              });
+              }
             }
-          });
+          }
         }
         return EvolutionChain(
           evolutionOne: Species(
@@ -51,7 +51,6 @@ class EvolutionHandler {
         );
       }
     } else {
-      print('error');
       return null;
     }
     return null;

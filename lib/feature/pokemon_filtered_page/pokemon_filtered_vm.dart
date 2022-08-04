@@ -11,11 +11,11 @@ class FilteredPageVmFactory extends VmFactory<AppState, PokemonFilteredPageConne
 
   UnionPageState<List<Pokemon>> _getPageState() {
     if (state.wait.isWaitingFor(GetFilterListAction.key)) {
-      return UnionPageState.loading();
+      return const UnionPageState.loading();
     } else if (state.filteredPokemons.isNotEmpty) {
       return UnionPageState(state.filteredPokemons);
     } else {
-      return UnionPageState.error("Can't load filtered pokemons");
+      return const UnionPageState.error("Can't load filtered pokemons");
     }
   }
 }

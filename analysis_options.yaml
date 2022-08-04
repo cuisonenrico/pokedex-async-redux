@@ -1,9 +1,9 @@
-
-include: package:pedantic/analysis_options.yaml
+include: package:flutter_lints/flutter.yaml
 
 linter:
-  # producing the lint.
   rules:
+    # Add additional rules to be checked by the linter
+    #   - <rule_name>
     - always_declare_return_types
     - always_require_non_null_named_parameters
     - annotate_overrides
@@ -19,11 +19,10 @@ linter:
     - prefer_if_null_operators
     - prefer_single_quotes
     - prefer_spread_collections
-
+    
 analyzer:
   exclude:
-    - lib/state/*.freezed.dart
-    - lib/state/*.g.dart
-
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+      - "**/*.g.dart"
+      - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore

@@ -9,14 +9,13 @@ class PokemonHandler {
     try {
       response = await http.get(Uri.tryParse(pokemonUrl) ?? Uri());
     } catch (e) {
-      print(e);
+      rethrow;
     }
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       List pokemonMap = result['results'];
       return pokemonMap.map((e) => Pokemon.fromJson(e)).toList();
     } else {
-      print('error');
       return null;
     }
   }
@@ -26,7 +25,7 @@ class PokemonHandler {
     try {
       response = await http.get(Uri.tryParse('$pokemonTypeUri$filterKey/') ?? Uri());
     } catch (e) {
-      print(e);
+      rethrow;
     }
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
@@ -38,7 +37,6 @@ class PokemonHandler {
               ))
           .toList();
     } else {
-      print('error');
       return null;
     }
   }

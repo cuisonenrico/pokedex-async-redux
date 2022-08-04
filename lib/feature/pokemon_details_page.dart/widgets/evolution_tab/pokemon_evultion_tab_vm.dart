@@ -11,11 +11,11 @@ class PokemonEvolutionVmFactory extends VmFactory<AppState, PokemonEvolutionConn
 
   UnionPageState<EvolutionChain?> _getPageState() {
     if (state.wait.isWaitingFor(GetEvolutionAction.key)) {
-      return UnionPageState.loading();
+      return const UnionPageState.loading();
     } else if (state.evolution != null) {
       return UnionPageState(state.evolution);
     } else {
-      return UnionPageState.error("Can't load details");
+      return const UnionPageState.error("Can't load details");
     }
   }
 }

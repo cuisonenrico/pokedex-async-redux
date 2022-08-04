@@ -18,15 +18,15 @@ class EvolutionHandler {
 
       if (evoChainResponse.statusCode == 200) {
         final listEvolution = jsonDecode(evoChainResponse.body);
-        List evolutionList = listEvolution['chain']['evolves_to'];
-        var evo3 = <Species>[];
-        //Checks if there is 3rd evolution // adds to 'evo3 'list
-        if (evolutionList.isNotEmpty) {
-          evolutionList.forEach((element) {
+        List evolution2 = listEvolution['chain']['evolves_to'];
+        var evolution3 = <Species>[];
+        //Checks if there is 3rd evolution // adds to 'evolution3 'list
+        if (evolution2.isNotEmpty) {
+          evolution2.forEach((element) {
             if (element['evolves_to'] != null) {
-              List checkList2 = element['evolves_to'];
-              checkList2.forEach((species) {
-                evo3.add(Species(
+              List evloution2List = element['evolves_to'];
+              evloution2List.forEach((species) {
+                evolution3.add(Species(
                   name: species['species']['name'],
                   id: species['species']['url'].split('/')[6],
                 ));
@@ -39,15 +39,15 @@ class EvolutionHandler {
             name: listEvolution['chain']['species']['name'],
             id: listEvolution['chain']['species']['url'].toString().split('/')[6],
           ),
-          evolutionTwo: evolutionList.isNotEmpty
-              ? evolutionList
+          evolutionTwo: evolution2.isNotEmpty
+              ? evolution2
                   .map((e) => Species(
                         name: e['species']['name'],
                         id: e['species']['url'].toString().split('/')[6],
                       ))
                   .toList()
               : [],
-          evolutionThree: evo3,
+          evolutionThree: evolution3,
         );
       }
     } else {

@@ -1,4 +1,5 @@
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
+import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_search_page.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/filter_bottom_sheet_connector.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.search),
             color: Colors.black,
             tooltip: 'Search Icon',
-            onPressed: () {},
+            onPressed: () => showSearch(context: context, delegate: PokemonSearchPage(pokemonList: pokemon)),
           )
         ],
         backgroundColor: Colors.transparent,

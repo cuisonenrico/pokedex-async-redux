@@ -33,10 +33,9 @@ class PokemonSearchPage extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    var suggestions = <Pokemon>[];
-    if (query.isNotEmpty) {
-      suggestions = pokemonList.where((element) => element.name!.contains(query)).map((queried) => queried).toList();
-    }
+    var suggestions = query.isNotEmpty
+        ? pokemonList.where((element) => element.name!.contains(query)).map((queried) => queried).toList()
+        : [];
     return Padding(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: GridView.count(

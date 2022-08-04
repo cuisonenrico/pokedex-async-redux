@@ -6,7 +6,8 @@ import 'package:pokedex_async_redux/utilities/extensions.dart';
 class PokemonEvolutionTabWidget extends StatelessWidget {
   const PokemonEvolutionTabWidget({
     required this.thisSpecies,
-  });
+    Key? key,
+  }) : super(key: key);
   final List<Species> thisSpecies;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class PokemonEvolutionTabWidget extends StatelessWidget {
                   height: 50,
                 ),
                 Text('#${thisSpecie.id.toString().padLeft(3, '0')}'),
-                Text('${thisSpecie.name.toString().capitalize}'),
+                Text(thisSpecie.name.toString().capitalize),
               ],
             ),
           )

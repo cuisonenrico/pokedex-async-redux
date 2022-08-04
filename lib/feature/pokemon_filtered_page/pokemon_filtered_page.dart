@@ -7,7 +7,8 @@ class PokemonFilteredPage extends StatelessWidget {
   const PokemonFilteredPage({
     required this.pokemon,
     required this.filterKey,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final List<Pokemon> pokemon;
   final String filterKey;
@@ -17,7 +18,7 @@ class PokemonFilteredPage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
+          const SliverAppBar(
             leading: BackButton(color: Colors.black),
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -28,7 +29,7 @@ class PokemonFilteredPage extends StatelessWidget {
             centerTitle: true,
             title: Text(
               filterKey.capitalize,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
@@ -38,7 +39,7 @@ class PokemonFilteredPage extends StatelessWidget {
           ),
           SliverFillRemaining(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: GridView.count(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5,

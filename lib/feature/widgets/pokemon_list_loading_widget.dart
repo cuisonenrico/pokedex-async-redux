@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PokemonListLoading extends StatelessWidget {
-  const PokemonListLoading();
+  const PokemonListLoading({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +10,7 @@ class PokemonListLoading extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Scaffold(
+      body: const Scaffold(
         body: Center(child: SpinKitDualRing(color: Colors.black)),
       ),
     );

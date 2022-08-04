@@ -7,7 +7,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class HomePageConnector extends StatelessWidget {
-  const HomePageConnector();
+  const HomePageConnector({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HomePageConnector extends StatelessWidget {
         builder: (context, vm) {
           return vm.homePageState.when(
             (pokemonList) => HomePage(pokemon: pokemonList!),
-            loading: () => PokemonListLoading(),
+            loading: () => const PokemonListLoading(),
             error: (err) => Center(child: Text(err!)),
           );
         });

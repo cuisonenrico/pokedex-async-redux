@@ -4,7 +4,10 @@ import 'package:pokedex_async_redux/utilities/extensions.dart';
 import 'package:pokedex_async_redux/utilities/strings.dart';
 
 class FilterBottomSheet extends StatelessWidget {
-  const FilterBottomSheet({required this.onFilterTap});
+  const FilterBottomSheet({
+    required this.onFilterTap,
+    Key? key,
+  }) : super(key: key);
   final Function(String typeFilter) onFilterTap;
 
   @override
@@ -12,7 +15,7 @@ class FilterBottomSheet extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 3),
             child: Icon(
               Icons.remove,
@@ -21,7 +24,7 @@ class FilterBottomSheet extends StatelessWidget {
           ),
           Flexible(
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 mainAxisExtent: 30,
                 crossAxisSpacing: 5,
@@ -53,7 +56,7 @@ class FilterBottomSheet extends StatelessWidget {
                         bottom: 5,
                         child: Text(
                           colorFilters[index].capitalize,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       )
                     ],

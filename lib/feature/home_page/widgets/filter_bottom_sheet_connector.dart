@@ -5,7 +5,7 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class FilterBottomSheetConnector extends StatelessWidget {
-  const FilterBottomSheetConnector();
+  const FilterBottomSheetConnector({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

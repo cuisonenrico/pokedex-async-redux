@@ -7,7 +7,10 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class PokemonFilteredPageConnector extends StatelessWidget {
-  const PokemonFilteredPageConnector({required this.filterKey});
+  const PokemonFilteredPageConnector({
+    required this.filterKey,
+    Key? key,
+  }) : super(key: key);
   final String filterKey;
 
   @override
@@ -21,7 +24,7 @@ class PokemonFilteredPageConnector extends StatelessWidget {
             pokemon: pokemonList!,
             filterKey: vm.filterKey,
           ),
-          loading: () => PokemonListLoading(),
+          loading: () => const PokemonListLoading(),
           error: (err) => Center(child: Text(err!)),
         );
       },

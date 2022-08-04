@@ -13,17 +13,17 @@ dependencies:
   http: any
   intl: ^0.17.0
   flutter_spinkit: any
+  freezed: ^2.1.0+1
+  freezed_annotation: ^2.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   json_annotation: ^4.6.0
   json_serializable: ^6.3.1
-  freezed_annotation: ^2.1.0
   build_runner: ^2.2.0
   flutter_lints: ^2.0.0 
-  freezed: ^2.1.0+1
-  pedantic: ^1.11.0
+  
 
 flutter:
   uses-material-design: true

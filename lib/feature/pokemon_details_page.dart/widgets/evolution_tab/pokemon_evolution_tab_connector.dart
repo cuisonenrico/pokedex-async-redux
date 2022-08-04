@@ -7,7 +7,10 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class PokemonEvolutionConnector extends StatelessWidget {
-  const PokemonEvolutionConnector(this.url);
+  const PokemonEvolutionConnector({
+    this.url,
+    Key? key,
+  }) : super(key: key);
   final String? url;
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class PokemonEvolutionConnector extends StatelessWidget {
         builder: (context, vm) {
           return vm.evolutionState.when(
             (value) => EvolutionTab(thisPokeEvo: value!),
-            loading: () => SpinKitSpinningLines(color: Colors.black),
+            loading: () => const SpinKitSpinningLines(color: Colors.black),
             error: (err) => Text(err.toString()),
           );
         });

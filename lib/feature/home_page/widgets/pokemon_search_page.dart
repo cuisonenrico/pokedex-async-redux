@@ -7,7 +7,7 @@ class PokemonSearchPage extends SearchDelegate {
   final List<Pokemon> pokemonList;
   @override
   List<Widget>? buildActions(BuildContext context) => [
-        IconButton(icon: Icon(Icons.clear), onPressed: () => query = ''),
+        IconButton(icon: const Icon(Icons.clear), onPressed: () => query = ''),
       ];
 
   @override
@@ -15,7 +15,7 @@ class PokemonSearchPage extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) => Padding(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: GridView.count(
           crossAxisCount: 2,
           mainAxisSpacing: 5,
@@ -37,7 +37,7 @@ class PokemonSearchPage extends SearchDelegate {
         ? pokemonList.where((element) => element.name!.contains(query)).map((queried) => queried).toList()
         : [];
     return Padding(
-      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: GridView.count(
         crossAxisCount: 2,
         mainAxisSpacing: 5,

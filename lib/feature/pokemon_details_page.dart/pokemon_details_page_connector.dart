@@ -7,7 +7,10 @@ import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class PokemonDetailsConnector extends StatelessWidget {
-  const PokemonDetailsConnector({required this.url});
+  const PokemonDetailsConnector({
+    required this.url,
+    Key? key,
+  }) : super(key: key);
   final String url;
 
   @override
@@ -18,7 +21,7 @@ class PokemonDetailsConnector extends StatelessWidget {
         builder: (context, vm) {
           return vm.pokemonDetailsState.when(
             (pokemonDetails) => PokemonDetails(pokemon: pokemonDetails!),
-            loading: () => PokemonDetailsLoading(),
+            loading: () => const PokemonDetailsLoading(),
             error: (err) => Center(child: Text(err!)),
           );
         });

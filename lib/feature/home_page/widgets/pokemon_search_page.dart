@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/pokemon_tile.dart';
+import 'package:pokedex_async_redux/utilities/extensions.dart';
 
 class PokemonSearchPage extends SearchDelegate {
   PokemonSearchPage({required this.pokemonList});
   final List<Pokemon> pokemonList;
   @override
   List<Widget>? buildActions(BuildContext context) => [
-        IconButton(
-          icon: Icon(Icons.clear),
-          onPressed: () {
-            if (query.isEmpty) {
-              close(context, null);
-            } else {
-              query = '';
-            }
-          },
-        ),
+        IconButton(icon: Icon(Icons.clear), onPressed: () => query = ''),
       ];
 
   @override
@@ -31,7 +23,7 @@ class PokemonSearchPage extends SearchDelegate {
             crossAxisSpacing: 5,
             childAspectRatio: 3 / 2,
             children: pokemonList
-                .where((element) => element.name!.contains(query))
+                .where((element) => element.name!.startsWith(query))
                 .map((queried) => PokemonTile(
                       thisPokemon: queried,
                       key: UniqueKey(),
@@ -40,5 +32,19 @@ class PokemonSearchPage extends SearchDelegate {
       );
 
   @override
-  Widget buildSuggestions(BuildContext context) => Container();
+  Widget buildSuggestions(BuildContext context) {
+    var suggestions = pokemonList.where((element) => element.name!.contains(query)).map((queried) => queried).toList();
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (BuildContext context, int index) {
+        return ListTile(
+          title: Text(suggestions[index].name!.capitalize),
+          onTap: () {
+            query = suggestions[index].name!;
+            showResults(context);
+          },
+        );
+      },
+    );
+  }
 }

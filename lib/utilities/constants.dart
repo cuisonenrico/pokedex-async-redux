@@ -5,6 +5,8 @@ const pokemonTypeUri = 'https://pokeapi.co/api/v2/type/';
 const pokemonDetailsUrl = 'https://pokeapi.co/api/v2/pokemon/';
 const pokemonImgUrl =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+const pokemonsPath = '/pokemon/';
+const pokemonsTypePath = '/type/';
 const scrollExtentOffset = 500;
 
 const Color kFire = Color(0xfffa6e70);

@@ -2,7 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/evolution_tab/pokemon_evolution_tab.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/widgets/evolution_tab/pokemon_evultion_tab_vm.dart';
-import 'package:pokedex_async_redux/state/actions/home_page_actions.dart';
+import 'package:pokedex_async_redux/state/actions/pokemon_details_actions.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 

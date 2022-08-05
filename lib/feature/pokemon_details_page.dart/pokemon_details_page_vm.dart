@@ -2,7 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/home_page/home_page_connector.dart';
 import 'package:pokedex_async_redux/models/union_page_state.dart';
-import 'package:pokedex_async_redux/state/actions/home_page_actions.dart';
+import 'package:pokedex_async_redux/state/actions/pokemon_details_actions.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
 
 class PokemonDetailsVmFactory extends VmFactory<AppState, HomePageConnector> {

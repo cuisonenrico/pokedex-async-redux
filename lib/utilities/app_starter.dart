@@ -8,11 +8,10 @@ import 'package:flutter/material.dart';
 final getIt = GetIt.instance;
 void appStarter() {
   WidgetsFlutterBinding.ensureInitialized();
-  getIt.registerLazySingleton<ApiService>(() => ApiService());
   final store = Store<AppState>(
     initialState: AppState.init(),
     actionObservers: [Log.printer(formatter: Log.multiLineFormatter)],
   );
-
+  getIt.registerLazySingleton<ApiService>(() => ApiService());
   runApp(PokedexApp(store: store));
 }

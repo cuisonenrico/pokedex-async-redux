@@ -25,12 +25,11 @@ class PokemonTileState extends State<PokemonTile> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      thisPokemonDetails = await getIt<ApiService>().detailsPokemonHandler.getDetails(widget.thisPokemon.url ?? '');
+      thisPokemonDetails = await ApiService().detailsPokemonHandler.getDetails(widget.thisPokemon.url ?? '');
       if (mounted) {
         setState(() {});
       }
     });
-
     super.initState();
   }
 

@@ -10,11 +10,11 @@ part 'app_state.g.dart';
 @freezed
 class AppState with _$AppState {
   factory AppState({
-    @Default(<Pokemon>[]) List<Pokemon> pokemon,
-    DetailsPokemon? pokemonDetails,
-    EvolutionChain? evolution,
-    @Default(<Pokemon>[]) List<Pokemon> filteredPokemons,
-    @Default('') String filterKey,
+    @Default(<Pokemon>[]) @JsonKey(name: 'pokemon') List<Pokemon> pokemon,
+    @JsonKey(name: 'pokemonDetails') DetailsPokemon? pokemonDetails,
+    @JsonKey(name: 'evolution') EvolutionChain? evolution,
+    @Default(<Pokemon>[]) @JsonKey(name: 'filteredPokemons') List<Pokemon> filteredPokemons,
+    @Default('') @JsonKey(name: 'filterKey') String filterKey,
     @Default(Wait.empty) @JsonKey(name: 'wait', ignore: true) Wait wait,
   }) = _AppState;
 

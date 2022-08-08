@@ -7,8 +7,8 @@ part 'pokemon_model.g.dart';
 @freezed
 class Pokemon with _$Pokemon {
   factory Pokemon({
-    String? name,
-    String? url,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'url') String? url,
     @Default(<SubType>[]) List<SubType>? types,
   }) = _Pokemon;
 

@@ -6,8 +6,8 @@ part 'specific_type_model.g.dart';
 @freezed
 class SpecificType with _$SpecificType {
   factory SpecificType({
-    String? name,
-    String? url,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'url') String? url,
   }) = _SpecificType;
 
   factory SpecificType.fromJson(Map<String, dynamic> json) => _$SpecificTypeFromJson(json);

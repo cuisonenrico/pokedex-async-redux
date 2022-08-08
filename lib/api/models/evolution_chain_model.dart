@@ -7,9 +7,9 @@ part 'evolution_chain_model.g.dart';
 @freezed
 class EvolutionChain with _$EvolutionChain {
   factory EvolutionChain({
-    Species? evolutionOne,
-    @Default(<Species>[]) List<Species> evolutionTwo,
-    @Default(<Species>[]) List<Species> evolutionThree,
+    @JsonKey(name: 'evolution_one') Species? evolutionOne,
+    @JsonKey(name: 'evolution_two') @Default(<Species>[]) List<Species> evolutionTwo,
+    @JsonKey(name: 'evolution_three') @Default(<Species>[]) List<Species> evolutionThree,
   }) = _EvolutionChain;
 
   factory EvolutionChain.fromJson(Map<String, dynamic> json) => _$EvolutionChainFromJson(json);

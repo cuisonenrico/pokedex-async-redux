@@ -6,8 +6,8 @@ part 'move_model.g.dart';
 @freezed
 class Move with _$Move {
   factory Move({
-    String? name,
-    String? url,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'url') String? url,
   }) = _Move;
 
   factory Move.fromJson(Map<String, dynamic> json) => _$MoveFromJson(json);

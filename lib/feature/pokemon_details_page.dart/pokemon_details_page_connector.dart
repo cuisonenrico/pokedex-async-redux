@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 
 class PokemonDetailsConnector extends StatelessWidget {
   const PokemonDetailsConnector({
-    required this.url,
+    required this.id,
     Key? key,
   }) : super(key: key);
-  final String url;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonDetailsVm>(
         vm: () => PokemonDetailsVmFactory(),
-        onInit: (store) async => store.dispatch(GetPokemonDetailsAction(url)),
+        onInit: (store) async => store.dispatch(GetPokemonDetailsAction(id)),
         builder: (context, vm) {
           return vm.pokemonDetailsState.when(
             (pokemonDetails) => PokemonDetails(pokemon: pokemonDetails!),

@@ -24,7 +24,7 @@ class PokemonTileState extends State<PokemonTile> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      thisPokemonDetails = await ApiService().detailsPokemonHandler.getDetails(widget.thisPokemon.url ?? '');
+      thisPokemonDetails = await ApiService().detailsPokemonHandler.getDetails(widget.thisPokemon.url?.parseId ?? '');
       if (mounted) {
         setState(() {});
       }
@@ -88,7 +88,7 @@ class PokemonTileState extends State<PokemonTile> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PokemonDetailsConnector(url: widget.thisPokemon.url!)),
+          MaterialPageRoute(builder: (context) => PokemonDetailsConnector(id: widget.thisPokemon.url!.parseId)),
         );
       },
     );

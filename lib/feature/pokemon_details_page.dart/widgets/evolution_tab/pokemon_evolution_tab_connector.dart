@@ -8,15 +8,15 @@ import 'package:flutter/material.dart';
 
 class PokemonEvolutionConnector extends StatelessWidget {
   const PokemonEvolutionConnector({
-    this.url,
+    this.id,
     Key? key,
   }) : super(key: key);
-  final String? url;
+  final String? id;
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonEvolutionVm>(
         vm: () => PokemonEvolutionVmFactory(),
-        onInit: (store) async => store.dispatch(GetEvolutionAction(url)),
+        onInit: (store) async => store.dispatch(GetEvolutionAction(id)),
         builder: (context, vm) {
           return vm.evolutionState.when(
             (value) => EvolutionTab(thisPokeEvo: value!),

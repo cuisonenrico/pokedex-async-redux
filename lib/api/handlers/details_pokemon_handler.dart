@@ -9,13 +9,16 @@ import 'package:pokedex_async_redux/api/models/specific_ability_model.dart';
 import 'package:pokedex_async_redux/api/models/specific_type_model.dart';
 import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:pokedex_async_redux/api/models/sub_type_model.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 
 class DetailsPokemonHandler {
   DetailsPokemonHandler({required this.apiClient});
   final ApiClient apiClient;
 
-  Future<DetailsPokemon?> getDetails(String url) async {
-    return apiClient.dio.getUri(Uri.tryParse(url) ?? Uri()).then((responsee) {
+  Future<DetailsPokemon?> getDetails(String id) async {
+    final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
+    final uri = baseUri.replace(path: '${baseUri.path}$pokemonsPath$id');
+    return apiClient.dio.getUri(uri).then((responsee) {
       List statMap = responsee.data['stats'];
       List typeMap = responsee.data['types'];
       List movesMap = responsee.data['moves'];
@@ -29,7 +32,7 @@ class DetailsPokemonHandler {
         weight: responsee.data['weight'],
         species: Species(
           name: speciesMap['name'],
-          id: speciesMap['url'],
+          url: speciesMap['url'],
         ),
         abilities: abilitiesMap
             .map((e) => Ability(
@@ -69,6 +72,5 @@ class DetailsPokemonHandler {
             .toList(),
       );
     });
-    
   }
 }

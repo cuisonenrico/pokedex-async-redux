@@ -45,7 +45,7 @@ class PokemonTabView extends StatelessWidget {
                       baseExperience: pokemonDetails.baseExperience ?? 0,
                     ),
                     BaseStats(stat: pokemonDetails.stats),
-                    PokemonEvolutionConnector(url: pokemonDetails.species?.id),
+                    PokemonEvolutionConnector(id: pokemonDetails.species?.url?.parseId),
                     MovesTab(
                       moves: pokemonDetails.moves,
                       color: (pokemonDetails.types?.first.type?.name ?? '').getPokemonColor,

@@ -1,6 +1,6 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:pokedex_async_redux/feature/home_page/widgets/filter_bottom_sheet_connector.dart';
-import 'package:pokedex_async_redux/state/actions/home_page_actions.dart';
+import 'package:pokedex_async_redux/state/actions/filter_actions.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
 
 class FilterBottomSheetVmFactory extends VmFactory<AppState, FilterBottomSheetConnector> {

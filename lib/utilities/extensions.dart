@@ -3,6 +3,7 @@ import 'package:pokedex_async_redux/utilities/constants.dart';
 
 extension StringExt on String {
   String get capitalize => '${this[0].toUpperCase()}${substring(1)}';
+  String get parseId => split('/')[6];
   Color get getPokemonColor {
     switch (this) {
       case 'fire':

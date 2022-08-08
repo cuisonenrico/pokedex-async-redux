@@ -7,7 +7,7 @@ part 'species_model.g.dart';
 class Species with _$Species {
   factory Species({
     String? name,
-    String? id,
+    String? url,
   }) = _Species;
 
   factory Species.fromJson(Map<String, dynamic> json) => _$SpeciesFromJson(json);

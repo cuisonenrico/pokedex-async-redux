@@ -1,8 +1,7 @@
-import 'dart:convert';
+import 'package:pokedex_async_redux/api/api_client.dart';
 import 'package:pokedex_async_redux/api/models/ability_model.dart';
 import 'package:pokedex_async_redux/api/models/detailed_stat_model.dart';
 import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
-import 'package:http/http.dart' as http;
 import 'package:pokedex_async_redux/api/models/move_model.dart';
 import 'package:pokedex_async_redux/api/models/moves_model.dart';
 import 'package:pokedex_async_redux/api/models/species_model.dart';
@@ -10,31 +9,30 @@ import 'package:pokedex_async_redux/api/models/specific_ability_model.dart';
 import 'package:pokedex_async_redux/api/models/specific_type_model.dart';
 import 'package:pokedex_async_redux/api/models/stat_model.dart';
 import 'package:pokedex_async_redux/api/models/sub_type_model.dart';
+import 'package:pokedex_async_redux/utilities/constants.dart';
 
 class DetailsPokemonHandler {
-  static Future<DetailsPokemon?> getDetails(String url) async {
-    var response = http.Response('', 100);
-    try {
-      response = await http.get(Uri.tryParse(url) ?? Uri());
-    } catch (e) {
-      rethrow;
-    }
-    if (response.statusCode == 200) {
-      var endResponse = jsonDecode(response.body);
-      List statMap = endResponse['stats'];
-      List typeMap = endResponse['types'];
-      List movesMap = endResponse['moves'];
-      List abilitiesMap = endResponse['abilities'];
-      var speciesMap = endResponse['species'];
+  DetailsPokemonHandler({required this.apiClient});
+  final ApiClient apiClient;
+
+  Future<DetailsPokemon?> getDetails(String id) async {
+    final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
+    final uri = baseUri.replace(path: '${baseUri.path}$pokemonsPath$id');
+    return apiClient.dio.getUri(uri).then((responsee) {
+      List statMap = responsee.data['stats'];
+      List typeMap = responsee.data['types'];
+      List movesMap = responsee.data['moves'];
+      List abilitiesMap = responsee.data['abilities'];
+      var speciesMap = responsee.data['species'];
       return DetailsPokemon(
-        id: endResponse['id'],
-        name: endResponse['name'],
-        baseExperience: endResponse['base_experience'],
-        height: endResponse['height'],
-        weight: endResponse['weight'],
+        id: responsee.data['id'],
+        name: responsee.data['name'],
+        baseExperience: responsee.data['base_experience'],
+        height: responsee.data['height'],
+        weight: responsee.data['weight'],
         species: Species(
           name: speciesMap['name'],
-          id: speciesMap['url'],
+          url: speciesMap['url'],
         ),
         abilities: abilitiesMap
             .map((e) => Ability(
@@ -73,8 +71,6 @@ class DetailsPokemonHandler {
                 ))
             .toList(),
       );
-    } else {
-      return null;
-    }
+    });
   }
 }

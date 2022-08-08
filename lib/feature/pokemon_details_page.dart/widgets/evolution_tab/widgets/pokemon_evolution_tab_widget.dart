@@ -17,11 +17,11 @@ class PokemonEvolutionTabWidget extends StatelessWidget {
             (thisSpecie) => Column(
               children: [
                 Image.network(
-                  '$pokemonImgUrl${thisSpecie.id ?? ''}.png',
+                  '$pokemonImgUrl${thisSpecie.url ?? ''}.png',
                   width: 50,
                   height: 50,
                 ),
-                Text('#${thisSpecie.id.toString().padLeft(3, '0')}'),
+                Text('#${thisSpecie.url.toString().padLeft(3, '0')}'),
                 Text(thisSpecie.name.toString().capitalize),
               ],
             ),

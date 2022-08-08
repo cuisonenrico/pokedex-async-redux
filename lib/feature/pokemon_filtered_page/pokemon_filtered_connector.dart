@@ -2,7 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:pokedex_async_redux/feature/pokemon_filtered_page/pokemon_filtered_page.dart';
 import 'package:pokedex_async_redux/feature/pokemon_filtered_page/pokemon_filtered_vm.dart';
 import 'package:pokedex_async_redux/feature/widgets/pokemon_list_loading_widget.dart';
-import 'package:pokedex_async_redux/state/actions/home_page_actions.dart';
+import 'package:pokedex_async_redux/state/actions/filter_actions.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:flutter/material.dart';
 

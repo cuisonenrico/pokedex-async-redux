@@ -3,7 +3,6 @@ import 'package:pokedex_async_redux/api/models/details_pokemon_model.dart';
 import 'package:pokedex_async_redux/api/models/pokemon_model.dart';
 import 'package:pokedex_async_redux/feature/pokemon_details_page.dart/pokemon_details_page_connector.dart';
 import 'package:pokedex_async_redux/feature/widgets/pill_container_widget.dart';
-import 'package:pokedex_async_redux/utilities/app_starter.dart';
 import 'package:pokedex_async_redux/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_async_redux/utilities/extensions.dart';

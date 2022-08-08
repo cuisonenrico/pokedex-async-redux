@@ -1,4 +1,4 @@
-import 'package:pokedex_async_redux/api/apI_service.dart';
+import 'package:pokedex_async_redux/api/api_service.dart';
 import 'package:pokedex_async_redux/state/actions/actions.dart';
 import 'package:pokedex_async_redux/state/app_state.dart';
 import 'package:pokedex_async_redux/utilities/app_starter.dart';

@@ -7,9 +7,9 @@ part 'ability_model.g.dart';
 @freezed
 class Ability with _$Ability {
   factory Ability({
-    SpecificAbility? ability,
-    bool? isHidden,
-    int? slot,
+    @JsonKey(name: 'ability') SpecificAbility? ability,
+    @JsonKey(name: 'is_hidden') bool? isHidden,
+    @JsonKey(name: 'slot') int? slot,
   }) = _Ability;
 
   factory Ability.fromJson(Map<String, dynamic> json) => _$AbilityFromJson(json);

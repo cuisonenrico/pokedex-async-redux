@@ -6,8 +6,8 @@ part 'detailed_stat_model.g.dart';
 @freezed
 class DetailedStat with _$DetailedStat {
   factory DetailedStat({
-    String? name,
-    String? url,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'url') String? url,
   }) = _DetailedStat;
 
   factory DetailedStat.fromJson(Map<String, dynamic> json) => _$DetailedStatFromJson(json);

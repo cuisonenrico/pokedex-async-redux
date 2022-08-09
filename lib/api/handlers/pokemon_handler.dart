@@ -19,11 +19,8 @@ class PokemonHandler {
     final queryParams = <String, dynamic>{};
     final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
     final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}$pokemonsTypePath$filterKey');
-    return apiClient.dio.getUri(uri).then((typeMap) => typeMap.data['pokemon']
-        .map<Pokemon>((e) => Pokemon(
-              name: e['pokemon']['name'],
-              url: e['pokemon']['url'],
-            ))
-        .toList());
+    return apiClient.dio
+        .getUri(uri)
+        .then((typeMap) => typeMap.data['pokemon'].map<Pokemon>((e) => Pokemon.fromJson(e['pokemon'])).toList());
   }
 }
